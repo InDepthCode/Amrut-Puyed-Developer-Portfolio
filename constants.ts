@@ -11,7 +11,7 @@ export const PROJECTS: Project[] = [
     {
         emoji: '🤖',
         title: 'AI Shopping & Research Assistant',
-        description: "Chat with AI to automate web browsing tasks, like 'Find MacBook under ₹1L on Amazon'—it searches, compares, and returns results with ratings.",
+        description: "It’s an AI-powered tool that automates browser actions (like form filling, product search, etc.) using natural language commands.",
         valueProp: 'Automates repetitive research, data collection, and price comparisons online.',
         tech: ['Python', 'JavaScript', 'FastAPI', 'React', 'OpenAI GPT-4o', 'Playwright', 'WebSocket'],
         githubUrl: 'https://github.com/InDepthCode/browser-use-automation',
