@@ -90,10 +90,11 @@ const Projects: React.FC = () => {
     ];
 
     return (
-        <>
-            <motion.section 
-                id="skills" 
-                className="py-16"
+        <section 
+            id="projects" 
+            className="py-16"
+        >
+            <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
@@ -117,11 +118,10 @@ const Projects: React.FC = () => {
                         }}
                     />
                 </div>
-            </motion.section>
+            </motion.div>
 
-            <motion.section 
-                id="projects" 
-                className="py-16"
+            <motion.div 
+                className="pt-16"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.1 }}
@@ -145,8 +145,8 @@ const Projects: React.FC = () => {
                         />
                     ))}
                 </div>
-            </motion.section>
-        </>
+            </motion.div>
+        </section>
     );
 };
 

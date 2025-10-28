@@ -8,7 +8,7 @@ import { GridPattern } from './components/ui/GridPattern';
 import { SectionNav } from './components/ui/SectionNav';
 import { SectionObserver } from './components/utils/SectionObserver';
 
-const SECTIONS = ['hero', 'skills', 'projects', 'resume', 'contact'];
+const SECTIONS = ['hero', 'projects', 'resume', 'contact'];
 
 const App: React.FC = () => {
     const [activeSection, setActiveSection] = useState('hero');
@@ -42,7 +42,7 @@ const App: React.FC = () => {
                 <SectionNav sections={SECTIONS} activeSection={activeSection} />
 
                 <div className="relative z-10">
-                    <main className="max-w-5xl lg:max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <main className="max-w-5xl lg:max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 md:pr-16 lg:pr-20">
                         <SectionObserver sectionId="hero" onVisibilityChange={setActiveSection}><Hero /></SectionObserver>
                         <SectionObserver sectionId="projects" onVisibilityChange={setActiveSection}><Projects /></SectionObserver>
                         <SectionObserver sectionId="resume" onVisibilityChange={setActiveSection}><Resume /></SectionObserver>
