@@ -23,6 +23,8 @@ const cardVariants: Variants = {
 };
 
 const ProjectCard: React.FC<{ project: Project; index: number; }> = ({ project, index }) => {
+    const skillsWithoutIcons = ['Remove.bg API', 'Database (60+ commits)'];
+
     return (
         <motion.div
             custom={index}
@@ -58,7 +60,7 @@ const ProjectCard: React.FC<{ project: Project; index: number; }> = ({ project, 
                             whileHover={{ scale: 1.1, y: -2, color: '#67e8f9', borderColor: 'rgba(103, 232, 249, 0.4)' }}
                             transition={{ type: 'spring', stiffness: 300 }}
                         >
-                            <SkillIcon skill={tech} className="w-3.5 h-3.5" />
+                            {!skillsWithoutIcons.includes(tech) && <SkillIcon skill={tech} className="w-3.5 h-3.5" />}
                             {tech}
                         </motion.div>
                     ))}

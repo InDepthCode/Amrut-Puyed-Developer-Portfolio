@@ -37,19 +37,53 @@ const iconHover: TargetAndTransition = {
 
 const badgeTransition: Transition = { type: 'spring', stiffness: 300 };
 
-// Simple inline SVG icons for badges
 const BadgeIcons = {
-    'Open-source contributor': (
+    star: (
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
     ),
-    '500+ GitHub commits/year': (
+    code: (
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
     ),
-    'LinkedIn content creator': (
+    linkedin: (
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
     ),
 };
 
+const badges = [
+    { 
+        text: 'Building in Public', 
+        icon: 'star',
+        style: {
+            textColor: 'text-pink-400',
+            borderColor: 'border-pink-400/30',
+            shadowColor: 'shadow-pink-500/10',
+            hoverTextColor: '#fb7185', // rose-400
+            hoverBorderColor: 'rgba(251, 113, 133, 0.7)'
+        }
+    },
+    { 
+        text: 'Shipping Code Daily',
+        icon: 'code',
+        style: {
+            textColor: 'text-slate-300',
+            borderColor: 'border-cyan-400/30',
+            shadowColor: 'shadow-cyan-500/10',
+            hoverTextColor: '#67e8f9', // cyan-300
+            hoverBorderColor: 'rgba(103, 232, 249, 0.7)'
+        }
+    },
+    { 
+        text: 'AI & Tech Blogger',
+        icon: 'linkedin',
+        style: {
+            textColor: 'text-slate-300',
+            borderColor: 'border-cyan-400/30',
+            shadowColor: 'shadow-cyan-500/10',
+            hoverTextColor: '#67e8f9', // cyan-300
+            hoverBorderColor: 'rgba(103, 232, 249, 0.7)'
+        }
+    }
+];
 
 const Hero: React.FC = () => {
     const [copied, setCopied] = useState(false);
@@ -116,15 +150,20 @@ const Hero: React.FC = () => {
             </motion.p>
             
             <motion.div variants={itemVariants} className="mt-8 flex justify-center flex-wrap gap-3">
-                {['Open-source contributor', '500+ GitHub commits/year', 'LinkedIn content creator'].map((badge, i) => (
+                {badges.map((badge, i) => (
                     <motion.div 
                         key={i} 
-                        className="flex items-center gap-2 bg-slate-800/80 border border-cyan-400/30 text-slate-300 text-xs font-medium px-3 py-1.5 rounded-full shadow-lg shadow-cyan-500/10"
-                        whileHover={{ scale: 1.05, y: -2, color: '#67e8f9', borderColor: 'rgba(103, 232, 249, 0.7)' }}
+                        className={`flex items-center gap-2 bg-slate-800/80 border text-xs font-medium px-3 py-1.5 rounded-full shadow-lg ${badge.style.textColor} ${badge.style.borderColor} ${badge.style.shadowColor}`}
+                        whileHover={{ 
+                            scale: 1.05, 
+                            y: -2, 
+                            color: badge.style.hoverTextColor, 
+                            borderColor: badge.style.hoverBorderColor 
+                        }}
                         transition={badgeTransition}
                     >
-                        {BadgeIcons[badge as keyof typeof BadgeIcons]}
-                        <span>{badge}</span>
+                        {BadgeIcons[badge.icon as keyof typeof BadgeIcons]}
+                        <span>{badge.text}</span>
                     </motion.div>
                 ))}
             </motion.div>
