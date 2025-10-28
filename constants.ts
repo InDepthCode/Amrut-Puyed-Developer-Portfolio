@@ -123,3 +123,30 @@ export const RESUME_DATA: ResumeData = {
         'Open Source Contributor: Actively contributing to various community projects.'
     ]
 };
+
+export const SPECIALIZED_SKILLS = [
+    'Spring Boot',
+    'Express.js',
+    'Flask',
+    'AngularJS',
+    'Vite',
+    'Tailwind CSS',
+    'Supabase',
+    'MySQL',
+    'OpenAI GPT-4o',
+    'Google Gemini AI',
+    'WebSocket',
+    'REST APIs',
+    'LangChain',
+    'FFmpeg',
+    'Camunda BPM',
+    'Chrome Extensions',
+    'JWT',
+    'Jenkins',
+    'Vercel',
+    'JUnit',
+    'Mockito',
+    'Razorpay',
+    'Axios',
+    'React Router',
+];

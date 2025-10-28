@@ -1,13 +1,20 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { SkillIcon } from './SkillIcon';
 
 interface SkillsCarouselProps {
     skills: string[];
+    direction?: 'left' | 'right';
+    showProgressBar?: boolean;
 }
 
-export const SkillsCarousel: React.FC<SkillsCarouselProps> = ({ skills }) => {
+export const SkillsCarousel: React.FC<SkillsCarouselProps> = ({ skills, direction = 'left', showProgressBar = true }) => {
     const duplicatedSkills = [...skills, ...skills];
+
+    const animation = direction === 'left' 
+        ? { x: ['0%', '-100%'] } 
+        : { x: ['-100%', '0%'] };
 
     return (
         <div 
@@ -18,7 +25,7 @@ export const SkillsCarousel: React.FC<SkillsCarouselProps> = ({ skills }) => {
         >
             <motion.div
                 className="flex items-center py-4"
-                animate={{ x: ['0%', '-100%'] }}
+                animate={animation}
                 transition={{
                     ease: 'linear',
                     duration: 40,
@@ -48,19 +55,20 @@ export const SkillsCarousel: React.FC<SkillsCarouselProps> = ({ skills }) => {
                 ))}
             </motion.div>
             
-            {/* Subtle Progress Bar */}
-            <div className="absolute bottom-0 left-0 right-0 h-1 bg-slate-800/50">
-                 <motion.div
-                    className="h-full bg-gradient-to-r from-cyan-500 to-violet-500"
-                    initial={{ width: "0%" }}
-                    animate={{ width: "100%" }}
-                    transition={{
-                        ease: "linear",
-                        duration: 40,
-                        repeat: Infinity,
-                    }}
-                />
-            </div>
+            {showProgressBar && (
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-slate-800/50">
+                     <motion.div
+                        className="h-full bg-gradient-to-r from-cyan-500 to-violet-500"
+                        initial={{ width: "0%" }}
+                        animate={{ width: "100%" }}
+                        transition={{
+                            ease: "linear",
+                            duration: 40,
+                            repeat: Infinity,
+                        }}
+                    />
+                </div>
+            )}
         </div>
     );
 };

@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
-import { PROJECTS, RESUME_DATA } from '../constants';
+import { PROJECTS, RESUME_DATA, SPECIALIZED_SKILLS } from '../constants';
 import type { Project } from '../types';
 import { GithubIcon } from './icons/GithubIcon';
 import { SkillsCarousel } from './ui/SkillsCarousel';
@@ -92,6 +92,34 @@ const Projects: React.FC = () => {
     return (
         <>
             <motion.section 
+                id="skills" 
+                className="py-16"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{ duration: 0.5 }}
+            >
+                <h3 className="text-3xl font-bold text-center mb-10 text-slate-100">Core Technologies</h3>
+                <div className="space-y-4">
+                    <SkillsCarousel skills={allSkills} direction="right" showProgressBar={false} />
+                    <SkillsCarousel skills={SPECIALIZED_SKILLS} direction="left" showProgressBar={false} />
+                </div>
+                {/* Single, shared progress bar */}
+                <div className="relative mt-6 h-1 w-full max-w-4xl mx-auto bg-slate-800/50 rounded-full overflow-hidden">
+                    <motion.div
+                        className="h-full bg-gradient-to-r from-cyan-500 to-violet-500"
+                        initial={{ width: "0%" }}
+                        animate={{ width: "100%" }}
+                        transition={{
+                            ease: "linear",
+                            duration: 40,
+                            repeat: Infinity,
+                        }}
+                    />
+                </div>
+            </motion.section>
+
+            <motion.section 
                 id="projects" 
                 className="py-16"
                 initial="hidden"
@@ -99,17 +127,6 @@ const Projects: React.FC = () => {
                 viewport={{ once: true, amount: 0.1 }}
                 transition={{ staggerChildren: 0.2 }}
             >
-                <motion.div 
-                    className="my-16"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                >
-                    <h3 className="text-2xl font-bold text-center mb-4 text-slate-200">Core Technologies</h3>
-                    <SkillsCarousel skills={allSkills} />
-                </motion.div>
-
                 <motion.h2 
                     className="text-3xl font-bold text-center mb-12 text-slate-100"
                     initial={{ opacity: 0, y: 20 }}

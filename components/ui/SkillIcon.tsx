@@ -30,6 +30,7 @@ const iconMap: { [key: string]: string } = {
     openaigpt4o: 'https://cdn.worldvectorlogo.com/logos/openai-2.svg',
     websocket: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/socketio/socketio-original.svg',
     chromeextensionmanifestv3: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/chrome/chrome-original.svg',
+    chromeextensions: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/chrome/chrome-original.svg',
     expressjs: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg',
     removebgapi: 'https://www.remove.bg/images/remove-bg-logo.svg',
     supabase: 'https://cdn.worldvectorlogo.com/logos/supabase-logo-icon.svg',
@@ -38,15 +39,23 @@ const iconMap: { [key: string]: string } = {
     reactrouter: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/reactrouter/reactrouter-original.svg',
     razorpay: 'https://razorpay.com/assets/razorpay-glyph.svg',
     vercelanalytics: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg',
+    vercel: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg',
     geminiai: 'https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg',
     springboot: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg',
     ffmpegwasm: 'https://www.ffmpeg.org/ffmpeg-logo.svg',
+    ffmpeg: 'https://www.ffmpeg.org/ffmpeg-logo.svg',
     camundabpm: 'https://camunda.com/favicon.svg',
     angularjs: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg',
     axios: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/axios/axios-plain.svg',
     jwt: 'https://cdn.worldvectorlogo.com/logos/jwt-3.svg',
     cicdpipelines: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/githubactions/githubactions-original.svg',
-    restapis: 'https://user-images.githubusercontent.com/3483131/229237223-72a39276-81f5-4309-a033-a3b3793f73a3.svg',
+    restapis: 'https://www.svgrepo.com/show/408164/api.svg',
+    flask: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg',
+    mysql: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',
+    langchain: 'https://raw.githubusercontent.com/hwchase17/langchain/master/docs/static/img/favicon.ico',
+    jenkins: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg',
+    junit: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/junit/junit-original.svg',
+    mockito: 'https://avatars.githubusercontent.com/u/7556820?s=280&v=4',
 };
 
 // A component to render an icon based on skill name, now using external SVGs
@@ -58,7 +67,7 @@ export const SkillIcon: React.FC<{ skill: string, className?: string }> = ({ ski
 
     if (iconUrl) {
         // Some logos are dark and need to be inverted for dark mode for better visibility
-        const needsInvert = ['nextjs', 'expressjs', 'githubactions', 'vercelanalytics', 'restapis', 'websocket'].includes(normalizedSkill);
+        const needsInvert = ['nextjs', 'expressjs', 'githubactions', 'vercelanalytics', 'restapis', 'websocket', 'vercel', 'flask', 'langchain'].includes(normalizedSkill);
         const imgClassName = `${className} ${needsInvert ? 'dark:invert' : ''}`;
         return <img src={iconUrl} alt={`${skill} logo`} className={imgClassName} style={{ objectFit: 'contain' }} />;
     }
