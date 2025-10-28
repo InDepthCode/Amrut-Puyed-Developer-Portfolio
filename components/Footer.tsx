@@ -38,16 +38,7 @@ const Footer: React.FC = () => {
                     <MailIcon className="w-6 h-6" />
                 </motion.a>
             </div>
-            <p className="text-slate-500 text-sm flex items-center justify-center gap-1.5">
-                Made with 
-                <motion.span 
-                    animate={{ scale: [1, 1.2, 1] }} 
-                    transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
-                >
-                    ❤️
-                </motion.span> 
-                by Amrut Puyed
-            </p>
+           
         </footer>
     );
 };

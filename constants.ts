@@ -59,7 +59,7 @@ export const PROJECTS: Project[] = [
 ];
 
 export const RESUME_DATA: ResumeData = {
-    summary: 'Results-driven Senior Software Engineer with a passion for building scalable, impact-driven applications using cloud-native architectures, AI, and automation. Proven ability to lead projects, mentor teams, and translate complex business requirements into high-quality technical solutions.',
+    summary: "Results-driven Software Engineer with 2+ years of experience delivering cloud-native applications, scalable microservices, and workflow automation using Java, Spring Boot, React.js, and modern DevOps. Specialized in architecting and deploying robust backend systems with Docker, AWS, and CI/CD pipelines. Adept at building high-impact products—including AI tools, SaaS, and web platforms—adopting Agile practices and collaborating across teams. Technical content creator, open source contributor, and continuous learner in the evolving software landscape.",
     experience: [
         {
             role: 'Senior Software Engineer',
