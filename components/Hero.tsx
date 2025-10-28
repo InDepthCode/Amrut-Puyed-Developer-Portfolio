@@ -74,7 +74,7 @@ const Hero: React.FC = () => {
             </motion.div>
 
             <motion.div variants={itemVariants}>
-                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold">
+                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold font-display">
                      <span className="block text-3xl md:text-4xl font-medium text-slate-300 mb-2">Hey, I'm</span>
                      <span 
                         className="bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-cyan-400 to-pink-400 animate-gradient"

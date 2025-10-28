@@ -18,7 +18,7 @@ export const CTA: React.FC = () => {
                      }}
                 />
                 <div className="relative z-10">
-                    <h2 className="text-3xl md:text-4xl font-bold text-slate-100 flex items-center justify-center gap-3">
+                    <h2 className="text-3xl md:text-4xl font-bold text-slate-100 flex items-center justify-center gap-3 font-display">
                         Let's build cool stuff together!
                         <motion.span
                             animate={{ rotate: [-15, 15, -15] }}

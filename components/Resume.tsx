@@ -28,7 +28,7 @@ const GlassCard: React.FC<{ children: React.ReactNode, delay?: number }> = ({ ch
 );
 
 const SectionHeading: React.FC<{ children: React.ReactNode; icon: React.ReactNode }> = ({ children, icon }) => (
-    <h3 className="flex items-center gap-3 text-2xl font-bold text-slate-100 mb-6">
+    <h3 className="flex items-center gap-3 text-2xl font-bold text-slate-100 mb-6 font-display">
         {icon}
         <span>{children}</span>
     </h3>
@@ -59,7 +59,7 @@ const Resume: React.FC = () => {
                 transition={{ duration: 0.5 }}
             >
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-                    <h2 className="text-3xl md:text-4xl font-bold text-slate-100">
+                    <h2 className="text-3xl md:text-4xl font-bold text-slate-100 font-display">
                         Professional Snapshot
                     </h2>
                     <motion.a 
@@ -93,7 +93,7 @@ const Resume: React.FC = () => {
                         {RESUME_DATA.experience.map((job, index) => (
                             <TimelineItem key={index} isLast={index === RESUME_DATA.experience.length - 1}>
                                 <div className="bg-slate-900/50 border border-slate-800/50 rounded-lg p-6 transition-all hover:border-slate-700">
-                                    <h4 className="text-xl font-semibold text-cyan-400">{job.role}</h4>
+                                    <h4 className="text-xl font-semibold text-cyan-400 font-display">{job.role}</h4>
                                     <p className="mt-1 text-slate-300 font-medium">{job.company} <span className="text-slate-500 font-normal text-sm ml-2">| {job.duration}</span></p>
                                     <motion.ul 
                                         className="mt-4 list-disc list-inside text-slate-400 space-y-2 text-sm"
@@ -115,7 +115,7 @@ const Resume: React.FC = () => {
                     <GlassCard delay={0.4}>
                         <SectionHeading icon={<GraduationCapIcon />}>Education</SectionHeading>
                         <div>
-                            <h4 className="text-lg font-semibold text-slate-200">{RESUME_DATA.education.degree}</h4>
+                            <h4 className="text-lg font-semibold text-slate-200 font-display">{RESUME_DATA.education.degree}</h4>
                             <p className="mt-1 text-slate-400">{RESUME_DATA.education.institution}</p>
                             <p className="text-slate-500 text-sm mt-1">{RESUME_DATA.education.duration} | {RESUME_DATA.education.gpa}</p>
                         </div>

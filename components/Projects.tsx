@@ -41,7 +41,7 @@ const ProjectCard: React.FC<{ project: Project; index: number; }> = ({ project, 
             </div>
 
             <div className="p-6 flex-grow flex flex-col">
-                <h3 className="text-xl font-bold text-slate-100 group-hover:text-cyan-300 transition-colors">{project.title}</h3>
+                <h3 className="text-xl font-bold text-slate-100 group-hover:text-cyan-300 transition-colors font-display">{project.title}</h3>
                 
                 <p className="mt-3 text-slate-400 text-sm leading-relaxed flex-grow">{project.description}</p>
                 
@@ -100,7 +100,7 @@ const Projects: React.FC = () => {
                 viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.5 }}
             >
-                <h3 className="text-3xl font-bold text-center mb-10 text-slate-100">Core Technologies</h3>
+                <h3 className="text-3xl font-bold text-center mb-10 text-slate-100 font-display">Core Technologies</h3>
                 <div className="space-y-4">
                     <SkillsCarousel skills={allSkills} direction="right" showProgressBar={false} />
                     <SkillsCarousel skills={SPECIALIZED_SKILLS} direction="left" showProgressBar={false} />
@@ -128,7 +128,7 @@ const Projects: React.FC = () => {
                 transition={{ staggerChildren: 0.2 }}
             >
                 <motion.h2 
-                    className="text-3xl font-bold text-center mb-12 text-slate-100"
+                    className="text-3xl font-bold text-center mb-12 text-slate-100 font-display"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
