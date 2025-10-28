@@ -13,11 +13,11 @@ export const PROJECTS: Project[] = [
         title: 'AI Shopping & Research Assistant',
         description: "It’s an AI-powered tool that automates browser actions (like form filling, product search, etc.) using natural language commands.",
         valueProp: 'Automates repetitive research, data collection, and price comparisons online.',
-        tech: ['Python', 'JavaScript', 'FastAPI', 'React', 'OpenAI GPT-4o', 'Playwright', 'WebSocket'],
+        tech: ['Python', 'JavaScript', 'FastAPI', 'React', 'OpenAI GPT-5', 'Playwright', 'WebSocket'],
         githubUrl: 'https://github.com/InDepthCode/browser-use-automation',
     },
     {
-        emoji: '🎨',
+        emoji: '🏞️ ',
         title: 'Unlimited Background Removal Tool',
         description: 'Remove photo backgrounds with high quality, handling complex edges like hair perfectly—superior to basic online tools.',
         valueProp: 'Ideal for product/profile images with unlimited free usage and no per-image costs.',
@@ -25,7 +25,7 @@ export const PROJECTS: Project[] = [
         githubUrl: 'https://github.com/InDepthCode/bg-remover',
     },
     {
-        emoji: '🌐',
+        emoji: '👥',
         title: 'Complete Social Media Platform',
         description: 'A full-featured, Twitter-like platform supporting user accounts, posts, likes, comments, and a follower system.',
         valueProp: 'Demonstrates end-to-end full-stack development and social media architecture skills.',
@@ -33,7 +33,7 @@ export const PROJECTS: Project[] = [
         githubUrl: 'https://github.com/InDepthCode/twitter-clone',
     },
     {
-        emoji: '🎬',
+        emoji: '🎥',
         title: 'Browser-Based Video Editor With AI',
         description: 'Edit videos in the browser with AI-powered suggestions. Processes clips locally using FFmpeg (WASM) and Gemini AI—no downloads required.',
         valueProp: 'A lightweight alternative to expensive desktop editors, perfect for quick edits.',
@@ -41,7 +41,7 @@ export const PROJECTS: Project[] = [
         githubUrl: 'https://github.com/InDepthCode/ai-vid-editor',
     },
     {
-        emoji: '📺',
+        emoji: '🔖',
         title: 'Smart YouTube Video Manager',
         description: "An advanced 'Watch Later' system that saves videos and entire playlists, complete with a keyword search to find content easily.",
         valueProp: 'Helps organize video-based learning and research, minimizing endless scrolling.',
