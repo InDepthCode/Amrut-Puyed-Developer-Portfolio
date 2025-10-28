@@ -18,7 +18,7 @@ export const PROJECTS: Project[] = [
     },
     {
         emoji: '🏞️ ',
-        title: 'Unlimited Background Removal Tool',
+        title: 'Background Removal Tool',
         description: 'Remove photo backgrounds with high quality, handling complex edges like hair perfectly—superior to basic online tools.',
         valueProp: 'Ideal for product/profile images with unlimited free usage and no per-image costs.',
         tech: ['TypeScript', 'Next.js 14+', 'Node.js', 'Express.js', 'Remove.bg API', 'Local AI'],
