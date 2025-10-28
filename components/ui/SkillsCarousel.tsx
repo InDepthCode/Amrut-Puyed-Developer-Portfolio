@@ -17,7 +17,7 @@ export const SkillsCarousel: React.FC<SkillsCarouselProps> = ({ skills }) => {
             }}
         >
             <motion.div
-                className="flex items-center"
+                className="flex items-center py-4"
                 animate={{ x: ['0%', '-100%'] }}
                 transition={{
                     ease: 'linear',
@@ -47,6 +47,20 @@ export const SkillsCarousel: React.FC<SkillsCarouselProps> = ({ skills }) => {
                     </motion.div>
                 ))}
             </motion.div>
+            
+            {/* Subtle Progress Bar */}
+            <div className="absolute bottom-0 left-0 right-0 h-1 bg-slate-800/50">
+                 <motion.div
+                    className="h-full bg-gradient-to-r from-cyan-500 to-violet-500"
+                    initial={{ width: "0%" }}
+                    animate={{ width: "100%" }}
+                    transition={{
+                        ease: "linear",
+                        duration: 40,
+                        repeat: Infinity,
+                    }}
+                />
+            </div>
         </div>
     );
 };

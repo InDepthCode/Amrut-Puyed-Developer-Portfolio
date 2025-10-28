@@ -6,6 +6,8 @@ export interface Project {
   valueProp: string;
   tech: string[];
   githubUrl: string;
+  // FIX: Added optional 'gallery' property to support project modals with image galleries.
+  gallery?: string[];
 }
 
 export interface WorkExperience {

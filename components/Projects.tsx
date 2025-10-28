@@ -1,14 +1,12 @@
 
 import React from 'react';
-// FIX: Import Variants and TargetAndTransition types from framer-motion to fix type errors.
-import { motion, Variants, TargetAndTransition } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { PROJECTS, RESUME_DATA } from '../constants';
 import type { Project } from '../types';
 import { GithubIcon } from './icons/GithubIcon';
 import { SkillsCarousel } from './ui/SkillsCarousel';
 import { SkillIcon } from './ui/SkillIcon';
 
-// FIX: Add Variants type to cardVariants. This fixes the error where 'spring' was inferred as 'string' instead of a specific animation type.
 const cardVariants: Variants = {
     hidden: { opacity: 0, y: 50, scale: 0.95 },
     visible: (i: number) => ({
@@ -24,61 +22,59 @@ const cardVariants: Variants = {
     }),
 };
 
-// FIX: Define hover animation objects with explicit types to prevent type inference issues.
-const projectCardHover: TargetAndTransition = {
-    scale: 1.03, y: -5, transition: { type: 'spring', stiffness: 300 }
-};
-
-const githubLinkHover: TargetAndTransition = {
-    scale: 1.05, transition: {type: 'spring', stiffness: 400, damping: 10}
-};
-
-const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, index }) => {
+const ProjectCard: React.FC<{ project: Project; index: number; }> = ({ project, index }) => {
     return (
-        <motion.div 
+        <motion.div
             custom={index}
             variants={cardVariants}
-            className="relative bg-slate-900/70 backdrop-blur-sm border border-slate-800 rounded-xl p-6 flex flex-col group transition-all duration-300 overflow-hidden"
-            whileHover={projectCardHover}
+            className="relative bg-slate-900 border border-slate-800 rounded-2xl flex flex-col group transition-all duration-300 overflow-hidden shadow-lg shadow-black/30"
+            whileHover={{ 
+                y: -8, 
+                boxShadow: '0 10px 30px -10px rgba(0,0,0,0.4), 0 0 20px 5px rgba(34, 211, 238, 0.15)',
+                transition: { type: 'spring', stiffness: 300 } 
+            }}
         >
-            <div className="absolute -inset-px rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                 style={{ 
-                    background: 'radial-gradient(400px at top left, rgba(34, 211, 238, 0.2), transparent 80%)'
-                 }}
-            />
-            <div className="relative z-10 flex-grow flex flex-col">
-                <div className="text-4xl mb-4" aria-hidden="true">{project.emoji}</div>
-                
+            <div className="absolute inset-0 border-2 border-transparent group-hover:border-cyan-400/50 rounded-2xl transition-all duration-300 pointer-events-none" />
+            
+            <div className="bg-gradient-to-b from-slate-800 to-slate-900 p-6 border-b border-slate-800">
+                <div className="text-5xl" aria-hidden="true">{project.emoji}</div>
+            </div>
+
+            <div className="p-6 flex-grow flex flex-col">
                 <h3 className="text-xl font-bold text-slate-100 group-hover:text-cyan-300 transition-colors">{project.title}</h3>
                 
                 <p className="mt-3 text-slate-400 text-sm leading-relaxed flex-grow">{project.description}</p>
                 
-                <div className="mt-3 text-sm text-slate-300/90 bg-slate-800/50 p-3 rounded-md border border-slate-700/50">
-                   <span className="font-semibold text-cyan-400">Value:</span> {project.valueProp}
+                <div className="mt-4 text-sm text-cyan-300/90 bg-slate-800/60 p-3 rounded-lg border border-cyan-400/20 flex items-start gap-3">
+                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" className="text-cyan-400 flex-shrink-0 mt-0.5"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
+                   <p><span className="font-semibold text-cyan-400">Value:</span> {project.valueProp}</p>
                 </div>
 
-                <div className="mt-4 flex flex-wrap gap-2">
+                <div className="mt-5 flex flex-wrap gap-x-2 gap-y-3">
                     {project.tech.map((tech, i) => (
-                        <span 
+                        <motion.div 
                             key={i} 
-                            className="inline-flex items-center gap-2 bg-cyan-900/60 text-cyan-300 text-xs font-medium px-3 py-1 rounded-full border border-cyan-400/30"
+                            className="inline-flex items-center gap-2 bg-slate-800 text-slate-300 text-xs font-medium px-3 py-1.5 rounded-full border border-slate-700"
+                            whileHover={{ scale: 1.1, y: -2, color: '#67e8f9', borderColor: 'rgba(103, 232, 249, 0.4)' }}
+                            transition={{ type: 'spring', stiffness: 300 }}
                         >
                             <SkillIcon skill={tech} className="w-3.5 h-3.5" />
                             {tech}
-                        </span>
+                        </motion.div>
                     ))}
                 </div>
             </div>
-            <div className="relative z-10 mt-6 pt-4 border-t border-slate-800">
+            <div className="p-6 mt-auto border-t border-slate-800 flex items-center gap-4">
                 <motion.a 
                     href={project.githubUrl} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="inline-flex items-center gap-2 text-sm font-medium text-slate-200 px-4 py-2 rounded-md bg-slate-800/80 hover:text-white transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-cyan-500 group-hover:to-violet-500"
-                    whileHover={githubLinkHover}
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-slate-200 px-5 py-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 transition-all duration-300 group-hover:bg-cyan-600 group-hover:text-white group-hover:shadow-lg group-hover:shadow-cyan-500/30"
+                    whileHover={{ scale: 1.05, transition: {type: 'spring', stiffness: 400, damping: 10} }}
                 >
                     <GithubIcon className="w-4 h-4" />
                     View on GitHub
+                    <span className="group-hover:translate-x-1 transition-transform duration-200 ease-in-out">&rarr;</span>
                 </motion.a>
             </div>
         </motion.div>
@@ -94,41 +90,46 @@ const Projects: React.FC = () => {
     ];
 
     return (
-        <motion.section 
-            id="projects" 
-            className="py-16"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            transition={{ staggerChildren: 0.2 }}
-        >
-            <motion.div 
-                className="my-16"
-                initial={{ opacity: 0, y: 20 }}
-                // FIX: Corrected typo 'whileInVew' to 'whileInView'.
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 }}
+        <>
+            <motion.section 
+                id="projects" 
+                className="py-16"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{ staggerChildren: 0.2 }}
             >
-                <h3 className="text-2xl font-bold text-center mb-4 text-slate-200">Core Technologies</h3>
-                <SkillsCarousel skills={allSkills} />
-            </motion.div>
+                <motion.div 
+                    className="my-16"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                    <h3 className="text-2xl font-bold text-center mb-4 text-slate-200">Core Technologies</h3>
+                    <SkillsCarousel skills={allSkills} />
+                </motion.div>
 
-            <motion.h2 
-                className="text-3xl font-bold text-center mb-12 text-slate-100"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-            >
-                Featured Projects
-            </motion.h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-                {PROJECTS.map((project, index) => (
-                    <ProjectCard key={project.title} project={project} index={index} />
-                ))}
-            </div>
-        </motion.section>
+                <motion.h2 
+                    className="text-3xl font-bold text-center mb-12 text-slate-100"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                >
+                    Featured Projects
+                </motion.h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                    {PROJECTS.map((project, index) => (
+                        <ProjectCard 
+                            key={project.title} 
+                            project={project} 
+                            index={index} 
+                        />
+                    ))}
+                </div>
+            </motion.section>
+        </>
     );
 };
 

@@ -1,69 +1,74 @@
+
 import React from 'react';
 
-// A simple component to render an icon based on skill name
-export const SkillIcon: React.FC<{ skill: string, className?: string }> = ({ skill, className }) => {
-    const normalizedSkill = skill.toLowerCase().replace(/[\s\.\+]/g, '');
+// A comprehensive map of skills to their official logo URLs
+const iconMap: { [key: string]: string } = {
+    react: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
+    react19: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
+    reactcalendar: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
+    nextjs: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',
+    nextjs14: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',
+    nodejs: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
+    fastapi: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg',
+    playwright: 'https://playwright.dev/img/playwright-logo.svg',
+    firebase: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg',
+    firebasefirestore: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg',
+    webassembly: 'https://webassembly.org/css/webassembly.svg',
+    javascript: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
+    typescript: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
+    python: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
+    java: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg',
+    sql: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
+    docker: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
+    kubernetes: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg',
+    githubactions: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/githubactions/githubactions-original.svg',
+    aws: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg',
+    gcp: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg',
+    postgresql: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
+    mongodb: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',
+    redis: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg',
+    openaigpt4o: 'https://cdn.worldvectorlogo.com/logos/openai-2.svg',
+    websocket: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/socketio/socketio-original.svg',
+    chromeextensionmanifestv3: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/chrome/chrome-original.svg',
+    expressjs: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg',
+    removebgapi: 'https://www.remove.bg/images/remove-bg-logo.svg',
+    supabase: 'https://cdn.worldvectorlogo.com/logos/supabase-logo-icon.svg',
+    vite: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg',
+    tailwindcss: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg',
+    reactrouter: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/reactrouter/reactrouter-original.svg',
+    razorpay: 'https://razorpay.com/assets/razorpay-glyph.svg',
+    vercelanalytics: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg',
+    geminiai: 'https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg',
+    springboot: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg',
+    ffmpegwasm: 'https://www.ffmpeg.org/ffmpeg-logo.svg',
+    camundabpm: 'https://camunda.com/favicon.svg',
+    angularjs: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg',
+    axios: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/axios/axios-plain.svg',
+    jwt: 'https://cdn.worldvectorlogo.com/logos/jwt-3.svg',
+    cicdpipelines: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/githubactions/githubactions-original.svg',
+    restapis: 'https://user-images.githubusercontent.com/3483131/229237223-72a39276-81f5-4309-a033-a3b3793f73a3.svg',
+};
 
-    switch (normalizedSkill) {
-        case 'react':
-        case 'react19':
-        case 'reactrouter':
-        case 'reactcalendar':
-            return <svg className={className} viewBox="0 0 32 32" fill="#61DAFB"><path d="M16,2.2c-4.3,0-8.3,1.8-11.2,5.1c-0.6,0.7-0.5,1.8,0.2,2.4l1.2,1.1c0.7,0.6,1.8,0.6,2.4-0.2C10.7,8.8,13.2,8,16,8s5.3,0.8,7.2,2.5c0.6,0.7,1.7,0.8,2.4,0.2l1.2-1.1c0.7-0.6,0.8-1.7,0.2-2.4C24.3,4,20.3,2.2,16,2.2zM27,10.3c-0.6-0.7-1.7-0.8-2.4-0.2L23.4,11c-0.7,0.6-0.8,1.7-0.2,2.4c1.8,2.2,2.8,5,2.8,8c0,1.4-0.2,2.8-0.7,4.1c-0.3,0.8,0.2,1.7,1,2l1.4,0.5c0.8,0.3,1.7-0.2,2-1C31.5,24.1,32,21.1,32,18C32,15,30.2,12.2,27,10.3z M5,10.3c-3.2,2-5,4.9-5,8c0,3.1,0.5,6.1,2.4,8.8c0.3,0.8,1.2,1.3,2,1l1.4-0.5c0.8-0.3,1.3-1.2,1-2c-0.5-1.3-0.7-2.7-0.7-4.1c0-3,1-5.7,2.8-8c0.6-0.7,0.5-1.8-0.2-2.4L7.4,10c-0.6-0.7-1.8-0.6-2.4,0.2z M16,24.2c-3.3,0-6-2.7-6-6s2.7-6,6-6s6,2.7,6,6S19.3,24.2,16,24.2z"/></svg>;
-        case 'nextjs':
-        case 'nextjs14':
-            return <svg className={className} fill="white" viewBox="0 0 180 180"><path d="M90,0a90,90,0,1,0,90,90A90,90,0,0,0,90,0ZM51.3,135V45h14V116.3L114.2,45H129V135H115V63.7L65.8,135Z"/></svg>;
-        case 'python':
-            return <svg className={className} viewBox="0 0 24 24"><g><path d="M12.8,8.2C12.8,8.2,12.8,8.2,12.8,8.2c-0.5-0.1-1.1-0.2-1.6-0.2c-2.1,0-3.9,1.7-3.9,3.9s1.7,3.9,3.9,3.9h0c0.6,0,1.1-0.1,1.6-0.2c0.2,0,0.3,0,0.5,0v-1.5c-0.2,0-0.3,0-0.5,0c-0.3,0-0.6,0-0.8-0.1c-1.3-0.2-2.3-1.3-2.3-2.6c0-1.3,1-2.4,2.3-2.6c0.3,0,0.5-0.1,0.8-0.1c0.2,0,0.3,0,0.5,0V8.2z" fill="#3776AB"></path><path d="M11.2,15.8c0.5,0.1,1.1,0.2,1.6,0.2c2.1,0,3.9-1.7,3.9-3.9s-1.7-3.9-3.9-3.9h0c-0.6,0-1.1,0.1-1.6,0.2c-0.2,0-0.3,0-0.5,0v1.5c0.2,0,0.3,0,0.5,0c0.3,0,0.6,0,0.8,0.1c1.3,0.2,2.3,1.3,2.3,2.6c0-1.3-1-2.4-2.3-2.6c-0.3,0-0.5,0.1-0.8,0.1c-0.2,0-0.3,0-0.5,0V15.8z" fill="#FFD43B"></path><path d="M12,0C5.4,0,0,5.4,0,12s5.4,12,12,12s12-5.4,12-12S18.6,0,12,0z M17,17c-0.8,0.8-2,1.4-3.5,1.7v-2.8c0.5-0.2,1-0.6,1.4-1.1c0.6-0.7,0.9-1.6,0.9-2.8c0-1.2-0.3-2.1-0.9-2.8c-0.4-0.5-0.9-0.8-1.4-1.1V4.3c1.4,0.3,2.7,0.9,3.5,1.7c1.7,1.7,2.7,4,2.7,6.5S18.7,15.3,17,17z M4.3,10.5V7c0.8-0.8,2-1.4,3.5-1.7v2.8C7.3,8.4,6.8,8.7,6.4,9.2C5.8,9.9,5.5,10.9,5.5,12c0,1.2,0.3,2.1,0.9,2.8c0.4,0.5,0.9,0.8,1.4,1.1v2.8c-1.4-0.3-2.7-0.9-3.5-1.7C2.6,15.3,1.5,13,1.5,10.5S2.6,5.7,4.3,4.3z" fill="#306998" style={{ "fillRule": "evenodd" }}></path></g></svg>;
-        case 'java':
-            return <svg className={className} viewBox="0 0 20 20" fill="#f89820"><path d="M14.59 13.412c.516-.928.82-2.02.82-3.118v-1.29h1.773V7.23H15.41v-.734c0-2.125-1.25-3.375-3.375-3.375h-1.06a3.81 3.81 0 00-3.92 3.809v.29h2.384v-.29c0-.88.618-1.559 1.536-1.559h1.06c.928 0 1.517.618 1.517 1.56v.733H8.381c-1.765 0-3.183 1.34-3.183 3.01v.088c0 1.67 1.418 3.01 3.183 3.01h2.247c1.085 1.418 2.72 2.306 4.608 2.306h.355V14.59c-.928 0-1.765-.432-2.296-1.177zm-3.832-1.765H8.381c-.88 0-1.559-.617-1.559-1.516v-.088c0-.9.68-1.517 1.56-1.517h4.743v3.12h-2.365z" fillRule="nonzero" fill="#5382a1"></path></svg>;
-        case 'springboot':
-            return <svg className={className} viewBox="0 0 24 24" fill="#6DB33F"><path d="M21.1,8.1C20.6,4.6,17.4,2,14,2c-2.4,0-4.6,1.2-5.9,3.1C6.5,4.2,4.2,4.8,2.9,6.7C1,9.2,1.9,12.5,4.3,14c-0.2,0.5-0.3,1-0.3,1.5c0,2.2,1.8,4,4,4c1.1,0,2.1-0.4,2.8-1.2c1.7,1.2,4,1.4,5.9,0.5c2.6-1.2,4.2-4,4.2-6.9C21.3,10.5,21.5,9.2,21.1,8.1z M17,16.5c-0.7,0.9-1.8,1.5-2.9,1.5c-0.3,0-0.6,0-0.9-0.1C11.5,19.2,9,18.3,8,15.8c-0.6-1.5-0.5-3.2,0.4-4.6C8.8,10.9,9.3,10.7,9.8,10.7c0.6,0,1,0.5,1,1c0,0.5-0.4,0.9-0.8,1c-0.5,0.1-0.8,0.5-0.7,1c0.1,0.5,0.6,0.9,1.1,0.8c2.1-0.3,3.7-2,3.7-4.1c0-0.9-0.3-1.8-0.8-2.5c-0.4-0.5-0.3-1.1,0.2-1.4c0.5-0.4,1.1-0.3,1.4,0.2c0.8,1.1,1.2,2.4,1.2,3.7c0,3-2.1,5.6-5,6.3c0.1,0.4,0.1,0.8,0.1,1.1c0,0.5-0.1,0.9-0.3,1.3c0.2,0,0.4,0,0.5,0c0.6,0,1.1-0.2,1.5-0.6c0.4-0.4,0.3-1-0.1-1.4c-0.4-0.4-1-0.5-1.4-0.1c-0.4,0.4-0.5,1-0.1,1.4c0.1,0.1,0.2,0.2,0.3,0.3c-0.3,0.5-0.8,0.9-1.4,1.1c-0.4-0.3-0.8-0.6-1.1-1c-0.2-0.2-0.4-0.4-0.6-0.6c0.3-0.1,0.6-0.3,0.8-0.5c0.4-0.4,0.3-1-0.1-1.4c-0.4-0.4-1-0.5-1.4-0.1c-0.4,0.4-0.5,1-0.1,1.4c0.1,0.1,0.2,0.2,0.3,0.2c-0.1,0.1-0.2,0.2-0.2,0.3c0.4,0.6,0.9,1.1,1.5,1.5c-0.1,0-0.2,0-0.3,0c-0.9,0-1.7-0.5-2.2-1.2C9.7,16.6,9,15.6,9,14.5c0-1.2,0.6-2.4,1.6-3c0.4-0.3,0.5-0.8,0.2-1.2c-0.3-0.4-0.8-0.5-1.2-0.2c-1.4,1-2.3,2.6-2.3,4.4c0,0.4,0.1,0.8,0.2,1.2c-1.9-1-2.6-3.3-1.6-5.2C7,9,8.2,8.4,9.6,8.4c0.2,0,0.5,0,0.7,0.1C11.3,6.3,13,5,15,5c2.2,0,4.1,1.5,4.7,3.6c0.3,0,0.6-0.1,0.9-0.1c0.7,0,1.3,0.2,1.8,0.6C21.6,10,21,11.5,20,12.5c-0.5,0.5-0.5,1.3-0.1,1.7C20.3,14.6,21,15.5,21,16.5z"/></svg>;
-        case 'aws':
-            return <svg className={className} viewBox="0 0 24 24" fill="#FF9900"><path d="M14.4,15.9c-0.3,0.2-0.6,0.3-1,0.3c-0.4,0-0.8-0.1-1-0.3c-0.3-0.2-0.5-0.5-0.6-0.9l-0.3-1.1c-0.1-0.3,0-0.6,0.2-0.8s0.5-0.3,0.8-0.2l1.1,0.3c0.4,0.1,0.8,0.5,0.9,0.9c0.1,0.4,0,0.8-0.3,1.1c0,0-0.1,0-0.1,0.1c-0.2,0.2-0.4,0.2-0.6,0.2c-0.2,0-0.4-0.1-0.6-0.2c-0.2-0.1-0.3-0.3-0.3-0.6c0-0.2,0.1-0.4,0.3-0.6l0.6-0.4c-0.2-0.4-0.6-0.8-1-1c-0.5-0.3-1-0.4-1.6-0.4c-1,0-2,0.4-2.7,1.1c-0.7,0.7-1.1,1.7-1.1,2.7c0,1,0.4,2,1.1,2.7c0.7,0.7,1.7,1.1,2.7,1.1c1.1,0,2.1-0.4,2.8-1.2C15.2,17.9,15.2,16.9,14.4,15.9z M22.2,10.6c0.4-0.8,0.6-1.6,0.6-2.5c0-2.8-1.6-5.2-4-6.4C17.3,1,15.7,0.5,14,0.5S10.7,1,9.2,1.8C6.8,3,5.2,5.4,5.2,8.1c0,0.9,0.2,1.7,0.6,2.5c-1.5,0.4-2.8,1.2-3.8,2.4s-1.5,2.7-1.5,4.3c0,1.4,0.4,2.8,1.2,4c0.8,1.2,2,2.1,3.4,2.6c1.1,0.4,2.2,0.6,3.4,0.6s2.3-0.2,3.4-0.6c1.4-0.5,2.6-1.4,3.4-2.6c0.8-1.2,1.2-2.5,1.2-4c0-1.6-0.5-3.1-1.5-4.3C25,11.8,23.7,11,22.2,10.6z M12.8,5.1c0-0.1-0.1-0.2-0.2-0.2h-1.3c-0.1,0-0.2,0.1-0.2,0.2v3.7c0,0.1,0.1,0.2,0.2,0.2h1.3c0.1,0,0.2-0.1,0.2-0.2V5.1z M16,11.8c-1.2,0-2.3,0.3-3.3,0.9l-0.6-0.8c-0.5-0.6-1.3-1-2.1-1c-0.2,0-0.4,0-0.5,0.1c-1.1,0.2-1.9,1.1-2.1,2.2c-0.2,1.1,0.3,2.2,1.2,2.8c0.6,0.4,1.3,0.6,2,0.6c0.4,0,0.8-0.1,1.1-0.2l0.4,1.5c-0.6,0.3-1.2,0.5-1.9,0.5c-2.2,0-4-1.8-4-4s1.8-4,4-4c1.5,0,2.8,0.8,3.5,2l0.6,0.8c0.6-0.3,1.3-0.5,2-0.5c2.2,0,4,1.8,4,4c0,1.5-0.8,2.8-2,3.5L16,11.8z"/></svg>;
-        case 'docker':
-            return <svg className={className} viewBox="0 0 24 24" fill="#2496ED"><path d="M22.1,9.8c-0.2-0.1-0.4-0.1-0.6-0.1H18V6.5c0-0.2-0.2-0.3-0.3-0.3s-0.3,0.2-0.3,0.3V9.6h-2.1V6.5c0-0.2-0.2-0.3-0.3-0.3s-0.3,0.2-0.3,0.3V9.6h-2.1V6.5c0-0.2-0.2-0.3-0.3-0.3s-0.3,0.2-0.3,0.3V9.6H9.6V6.5c0-0.2-0.2-0.3-0.3-0.3S9,6.4,9,6.5V9.6H6.9V8c0-0.2-0.2-0.3-0.3-0.3S6.2,7.8,6.2,8v1.6H3.3c-0.2,0-0.3,0.2-0.3,0.3v1.8c0,0.2,0.2,0.3,0.3,0.3h2.9v2.1H3.3c-0.2,0-0.3,0.2-0.3,0.3v1.8c0,0.2,0.2,0.3,0.3,0.3h2.9v1.6c0,0.2,0.2,0.3,0.3,0.3s0.3-0.2,0.3-0.3v-1.6h2.1v1.6c0,0.2,0.2,0.3,0.3,0.3s0.3-0.2,0.3-0.3v-1.6h2.1v1.6c0,0.2,0.2,0.3,0.3,0.3s0.3-0.2,0.3-0.3v-1.6h2.1v1.6c0,0.2,0.2,0.3,0.3,0.3s0.3-0.2,0.3-0.3v-1.6h2.7c0.2,0,0.4-0.1,0.6-0.1c2-0.4,3.3-2.1,3.3-4.2C25.4,11.8,24.1,10.2,22.1,9.8z M6.9,13.7v-2.1h2.1v2.1H6.9z M11.7,13.7v-2.1h2.1v2.1H11.7z M17.2,13.7v-2.1h2.1v2.1H17.2z M21.9,14c-0.8,0-1.5-0.7-1.5-1.5s0.7-1.5,1.5-1.5s1.5,0.7,1.5,1.5C23.4,13.3,22.7,14,21.9,14z M17.6,4.3c-1.2-1.1-2.7-1.8-4.4-2c-0.5-1.3-1.8-2.2-3.3-2.2c-1.9,0-3.5,1.6-3.5,3.5c0,0.7,0.2,1.3,0.5,1.9C3.1,6.5,0.7,9.6,0.7,13.2c0,0.1,0,0.2,0,0.4c-0.4,0.1-0.7,0.4-0.7,0.8v1.8c0,0.4,0.3,0.8,0.7,0.8c0,0.1,0,0.2,0,0.4c0.1,3.6,2.4,6.7,6.2,7.7c-0.3,0.5-0.5,1.1-0.5,1.8c0,1.9,1.6,3.5,3.5,3.5c1.5,0,2.8-1,3.3-2.2c1.7-0.2,3.2-0.9,4.4-2c1.2,1.1,2.7,1.8,4.4,2c0.5,1.3,1.8,2.2,3.3,2.2c1.9,0,3.5-1.6,3.5-3.5c0-0.7-0.2-1.3-0.5-1.9c3.8-1,6.2-4.1,6.2-7.7c0-0.1,0-0.2,0-0.4c0.4-0.1,0.7-0.4,0.7-0.8v-1.8c0-0.4-0.3-0.8-0.7-0.8c0-0.1,0-0.2,0-0.4C24.7,9.6,21.5,6.2,17.6,4.3z"/></svg>;
-        case 'typescript':
-            return <svg className={className} viewBox="0 0 24 24" fill="#3178C6"><path d="M22.5 12.06v-1.12L21.38 0H2.63L1.5 10.94v1.12L4.93 24h14.13L22.5 12.06zM9.5 19.5h-3L4.94 4.5h3.34l1.22 15zm8.19-2.25c-.24.19-.5.35-.78.47s-.6.18-.94.18c-1.13 0-2.06-.34-2.75-1.03s-1.04-1.6-1.04-2.73v-4.5h2.81v4.31c0 .41.07.72.21.94.14.22.38.33.72.33.33 0 .58-.09.75-.28s.25-.45.25-.8V8.94h2.81v8.31z"/></svg>;
-        case 'javascript':
-            return <svg className={className} viewBox="0 0 24 24" fill="#F7DF1E"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.28 15.36c-.4.28-.9.44-1.48.44-.8 0-1.45-.25-1.95-.75-.5-.5-.75-1.15-.75-1.95 0-.8.25-1.45.75-1.95.5-.5 1.15-.75 1.95-.75.6 0 1.1.16 1.48.44l-1.04.84c-.16-.12-.32-.2-.52-.2-.3 0-.55.08-.75.25-.2.17-.3.4-.3.7 0 .3.1.53.3.7.2.17.45.25.75.25.2 0 .36-.08.52-.2l1.04.84zm4.44-2.26c-.32.48-.76.84-1.32 1.08-.56.24-1.2.36-1.92.36-.8 0-1.5-.16-2.12-.48s-1.1-1.08-1.1-1.68c0-.36.1-.66.3-1 .2-.32.48-.56.84-.72.36-.16.78-.24 1.28-.24.4 0 .76.04 1.08.12.32.08.6.2.84.36l.36-1.08c-.2-.08-.4-.16-.68-.2-.28-.08-.52-.12-.76-.12-.4 0-.76.08-1.08.24s-.56.4-.76.72l-1.44-1.08c.56-.64 1.28-1.12 2.16-1.44.88-.32 1.8-.48 2.76-.48.8 0 1.52.12 2.16.36.64.24 1.16.6 1.56 1.08.4.48.68 1.08.84 1.8.12.72.18 1.56.18 2.52 0 .96-.04 1.8-.12 2.52-.08.6-.24 1.12-.48 1.56zm-.84-2.28c.08-.4.12-.88.12-1.44s-.04-1.04-.12-1.44c-.08-.4-.2-.72-.36-.96-.16-.24-.36-.4-.6-.48s-.52-.12-.84-.12c-.32 0-.6.04-.84.12-.24.08-.44.2-.6.36s-.28.36-.36.6c-.08.24-.12.52-.12.84 0 .32.04.6.12.84.08.24.2.44.36.6.16.16.36.28.6.36.24.08.52.12.84.12.32 0 .6-.04.84-.12.24-.08.44-.2.6-.36s.28-.36.36-.6z"/></svg>;
-        case 'nodejs':
-            return <svg className={className} viewBox="0 0 24 24" fill="#339933"><path d="M12.3.4C5.8.4.5 5.8.5 12.3c0 5.3 3.6 9.8 8.4 11.2 1.1.2 1.1-.5.9-1.2-.2-1-.2-3.1-.2-5.1 0-1.5-.5-2.6-1.2-3.1 3.1-.4 4.8-2.3 4.8-4.3 0-1-.4-2.3-1.2-3.1.5-1.5 1.5-4.8-.2-4.8-.8 0-2.3.8-3.1 1.2-1.8-.5-4.8-.5-6.6 0C5.1 2.8 3.6 2 2.8 2c-1.7 0-.7 3.3-.2 4.8-.8.8-1.2 2.1-1.2 3.1 0 2 1.7 3.9 4.8 4.3-.7.5-1.2 1.5-1.2 3.1 0 2.1 0 4.1-.2 5.1-.2.7-.2 1.5.9 1.2 4.8-1.5 8.4-6 8.4-11.2z"/></svg>;
-        case 'fastapi':
-            return <svg className={className} viewBox="0 0 24 24" fill="#009688"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.68 14.71c-1.33.61-2.8.93-4.32.93-3.6 0-6.6-2.5-7.22-5.83l1.96.38c.48 2.37 2.58 4.11 4.98 4.11.9 0 1.75-.25 2.5-.71l-2.03-2.03h5.9v5.9l-1.75-1.76zm-8.08-5.42c1.33-.61 2.8-.93 4.32-.93 3.6 0 6.6 2.5 7.22 5.83l-1.96-.38c-.48-2.37-2.58-4.11-4.98-4.11-.9 0-1.75.25-2.5.71l2.03 2.03h-5.9V6.29l1.75 1.76z"/></svg>;
-        case 'playwright':
-            return <svg className={className} viewBox="0 0 24 24" fill="#2EAD33"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-12h2v4h-2zm0 6h2v2h-2z" opacity=".3"/><path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10zm0-18c4.41 0 8 3.59 8 8s-3.59 8-8 8-8-3.59-8-8 3.59-8 8-8zm-1 6v4h2V10h-2zm1 10c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1z"/></svg>;
-        case 'firebase':
-        case 'firebasefirestore':
-            return <svg className={className} viewBox="0 0 24 24" fill="#FFCA28"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.01 15.65c-2.31-.53-4.1-1.5-5.1-2.92.53-.16 1.05-.3 1.57-.42.92.93 2.22 1.63 3.73 2.11-.1 1-.22 2.2-.2 3.23zM12 18.8c-.85-.92-1.39-2.3-1.39-3.98 0-.2.02-.4.04-.6.85.1 1.7.1 2.55 0 .02.2.04.4.04.6 0 1.68-.54 3.06-1.39 3.98zm1.01 1.05c-.02-1.03-.1-2.23-.2-3.23 1.51-.48 2.81-1.18 3.73-2.11.52.12 1.04.26 1.57.42-1 1.42-2.79 2.39-5.1 2.92zM4.35 12.63c.48-1.35 1.59-2.45 3.04-3.15-.36-.91-.59-1.89-.59-2.98 0-1.8.63-3.41 1.7-4.72C6.31 3.2 4 6.7 4 11c0 .55.07 1.09.2 1.63zM12 3.2c1.09 1.33 1.73 2.94 1.73 4.75s-.23 1.94-.59 2.85c1.45.7 2.56 1.8 3.04 3.15.13-.54.2-.1.08.2-1.63zM17.65 12.63c.13-.54.2-1.08.2-1.63 0-4.3-2.31-7.8-4.5-9.22 1.07 1.31 1.7 2.92 1.7 4.72s-.23 2.07-.59 2.98c1.45.7 2.56 1.8 3.04 3.15z"/></svg>;
-        case 'websocket':
-            return <svg className={className} viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-4.29-5.71l2.58-2.58-2.58-2.58L9.12 7.71 13.41 12l-4.29 4.29-1.42-1.42zM15 7.71l-1.41 1.41 2.58 2.58-2.58 2.58L15 15.71 19.29 12 15 7.71z"/></svg>;
-        case 'webassembly':
-        case 'ffmpeg(wasm)':
-            return <svg className={className} viewBox="0 0 24 24" fill="#654FF0"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.24L19.5 8 12 11.76 4.5 8 12 4.24zM3.5 8.78L12 13.24l8.5-4.46V16.2L12 20.66V15.5l-4.25-2.22L3.5 15.5v-6.72zM12 13.7l4.25 2.22-4.25 2.22V13.7z"/></svg>;
-        case 'kubernetes':
-            return <svg className={className} viewBox="0 0 24 24" fill="#326CE5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5-9h10v2H7zm1.63-4.37L12 7.25l3.37-1.62L12 4l-3.37 1.63zM8.63 15.37L12 13.75l3.37 1.62L12 17l-3.37-1.63z"/></svg>;
-        case 'githubactions':
-            return <svg className={className} viewBox="0 0 24 24" fill="#2088FF"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2-11h4v2h-4zm0 4h4v2h-4zm-4-4h2v2H6zm8 0h2v2h-2z"/></svg>;
-        case 'gcp':
-            return <svg className={className} viewBox="0 0 24 24" fill="#4285F4"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.2c-2.8 0-5.1-1.9-5.1-4.2s2.3-4.2 5.1-4.2c1.4 0 2.6.5 3.5 1.3l-1.5 1.5c-.5-.5-1.2-.8-2-.8-1.7 0-3.1 1.4-3.1 3.1s1.4 3.1 3.1 3.1c2 0 2.8-1.3 2.9-2h-2.9V10h5c.1.3.1.6.1 1 0 3-1.9 5.2-5.1 5.2z"/></svg>;
-        case 'postgresql':
-            return <svg className={className} viewBox="0 0 24 24" fill="#336791"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v10h-2zm-4 3h2v7H7zm8 0h2v7h-2z"/></svg>;
-        case 'mongodb':
-            return <svg className={className} viewBox="0 0 24 24" fill="#47A248"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.5 15.5c-2.5 0-4.5-2-4.5-4.5s2-4.5 4.5-4.5c1.4 0 2.7.7 3.5 1.8.8 1.1 1 2.5.5 3.8-.4 1.3-1.5 2.2-2.8 2.5-.4.1-.7.2-1.2.2zm1.5-7c-1.4 0-2.5 1.1-2.5 2.5s1.1 2.5 2.5 2.5c1.4 0 2.5-1.1 2.5-2.5s-1.1-2.5-2.5-2.5z"/></svg>;
-        case 'redis':
-            return <svg className={className} viewBox="0 0 24 24" fill="#DC382D"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-12h2v3h-2zm0 4h2v2h-2zm0 3h2v2h-2z"/></svg>;
-        case 'supabase':
-            return <svg className={className} viewBox="0 0 24 24" fill="#3ECF8E"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-4-9l4-4 4 4-4 4-4-4z"/></svg>;
-        case 'vite':
-            return <svg className={className} viewBox="0 0 24 24" fill="currentColor"><path d="M21.5 12.8L12 2l-9.5 10.8L12 22l9.5-9.2z" fill="#646CFF"/><path d="M12 2L2.5 12.8 12 22z" fill="#FFC107"/></svg>;
-        case 'tailwindcss':
-            return <svg className={className} viewBox="0 0 24 24" fill="#06B6D4"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-3.5-9c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5s.67 1.5 1.5 1.5zm7 0c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-3.5 4c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg>;
-        case 'razorpay':
-            return <svg className={className} viewBox="0 0 24 24" fill="#02A4F1"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2-9l4-4v10l-4-4H8v-2h2z"/></svg>;
-        case 'vercelanalytics':
-            return <svg className={className} viewBox="0 0 24 24" fill="white"><path d="M12 2L2 7v10l10 5 10-5V7L12 2z"/></svg>;
-        default:
-            return <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>;
+// A component to render an icon based on skill name, now using external SVGs
+export const SkillIcon: React.FC<{ skill: string, className?: string }> = ({ skill, className }) => {
+    // Normalize skill name to match keys in iconMap
+    const normalizedSkill = skill.toLowerCase().replace(/[\s\.\+\(\)]/g, '').replace(/\-+/g, '');
+
+    const iconUrl = iconMap[normalizedSkill];
+
+    if (iconUrl) {
+        // Some logos are dark and need to be inverted for dark mode for better visibility
+        const needsInvert = ['nextjs', 'expressjs', 'githubactions', 'vercelanalytics', 'restapis', 'websocket'].includes(normalizedSkill);
+        const imgClassName = `${className} ${needsInvert ? 'dark:invert' : ''}`;
+        return <img src={iconUrl} alt={`${skill} logo`} className={imgClassName} style={{ objectFit: 'contain' }} />;
     }
+
+    // Fallback to a generic icon if a specific logo is not found
+    return (
+        <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+    );
 };
