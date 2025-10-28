@@ -4,7 +4,7 @@ import { SOCIAL_LINKS } from '../constants';
 
 export const CTA: React.FC = () => {
     return (
-        <section className="py-20">
+        <section id="contact" className="py-20">
             <motion.div 
                 className="relative bg-slate-900/70 backdrop-blur-sm border border-slate-800 rounded-2xl p-8 md:p-12 text-center overflow-hidden"
                 initial={{ opacity: 0, y: 50 }}

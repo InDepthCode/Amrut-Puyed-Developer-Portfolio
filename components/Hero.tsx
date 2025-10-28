@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion, Variants, TargetAndTransition, Transition } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
@@ -55,6 +54,7 @@ const BadgeIcons = {
 const Hero: React.FC = () => {
     return (
         <motion.section 
+            id="hero"
             className="min-h-screen flex flex-col justify-center text-center py-20"
             initial="hidden"
             animate="visible"
