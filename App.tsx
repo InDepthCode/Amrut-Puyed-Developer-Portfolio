@@ -1,9 +1,10 @@
+
 import React, { useState, lazy, Suspense } from 'react';
 import { GridPattern } from './components/ui/GridPattern';
 import { SectionNav } from './components/ui/SectionNav';
 import { SectionObserver } from './components/utils/SectionObserver';
+import Hero from './components/Hero';
 
-const Hero = lazy(() => import('./components/Hero'));
 const Projects = lazy(() => import('./components/Projects'));
 const Resume = lazy(() => import('./components/Resume'));
 const Footer = lazy(() => import('./components/Footer'));
@@ -49,15 +50,15 @@ const App: React.FC = () => {
                 <SectionNav sections={SECTIONS} activeSection={activeSection} />
 
                 <div className="relative z-10">
-                    <Suspense fallback={loadingFallback}>
-                        <main className="max-w-5xl lg:max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 md:pr-16 lg:pr-20">
-                            <SectionObserver sectionId="hero" onVisibilityChange={setActiveSection}><Hero /></SectionObserver>
+                    <main className="max-w-5xl lg:max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 md:pr-16 lg:pr-20">
+                        <SectionObserver sectionId="hero" onVisibilityChange={setActiveSection}><Hero /></SectionObserver>
+                        <Suspense fallback={loadingFallback}>
                             <SectionObserver sectionId="projects" onVisibilityChange={setActiveSection}><Projects /></SectionObserver>
                             <SectionObserver sectionId="resume" onVisibilityChange={setActiveSection}><Resume /></SectionObserver>
                             <SectionObserver sectionId="contact" onVisibilityChange={setActiveSection}><CTA /></SectionObserver>
                             <Footer />
-                        </main>
-                    </Suspense>
+                        </Suspense>
+                    </main>
                 </div>
             </div>
         </div>
