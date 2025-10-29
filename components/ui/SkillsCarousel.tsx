@@ -46,7 +46,7 @@ export const SkillsCarousel: React.FC<SkillsCarouselProps> = React.memo(({ skill
                             transition: { type: "spring", stiffness: 300, damping: 15 }
                         }}
                     >
-                        <SkillIcon skill={skill} className="w-5 h-5 mr-2" />
+                        <SkillIcon skill={skill} width={20} height={20} className="mr-2" />
                         <span>{skill}</span>
                     </motion.div>
                 ))}

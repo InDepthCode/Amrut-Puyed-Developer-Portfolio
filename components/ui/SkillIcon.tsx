@@ -59,7 +59,7 @@ const iconMap: { [key: string]: string } = {
 };
 
 // A component to render an icon based on skill name, now using external SVGs
-export const SkillIcon: React.FC<{ skill: string, className?: string }> = React.memo(({ skill, className }) => {
+export const SkillIcon: React.FC<{ skill: string, className?: string, width: number, height: number }> = React.memo(({ skill, className, width, height }) => {
     // Normalize skill name to match keys in iconMap
     const normalizedSkill = skill.toLowerCase().replace(/[\s\.\+\(\)]/g, '').replace(/\-+/g, '');
 
@@ -68,13 +68,13 @@ export const SkillIcon: React.FC<{ skill: string, className?: string }> = React.
     if (iconUrl) {
         // Some logos are dark and need to be inverted for dark mode for better visibility
         const needsInvert = ['nextjs', 'expressjs', 'githubactions', 'vercelanalytics', 'restapis', 'websocket', 'vercel', 'flask', 'langchain'].includes(normalizedSkill);
-        const imgClassName = `${className} ${needsInvert ? 'dark:invert' : ''}`;
-        return <img src={iconUrl} alt={`${skill} logo`} className={imgClassName} style={{ objectFit: 'contain' }} loading="lazy" decoding="async" />;
+        const imgClassName = `${className || ''} ${needsInvert ? 'dark:invert' : ''}`;
+        return <img src={iconUrl} alt={`${skill} logo`} className={imgClassName} width={width} height={height} style={{ objectFit: 'contain' }} loading="lazy" decoding="async" />;
     }
 
     // Fallback to a generic icon if a specific logo is not found
     return (
-        <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <svg className={className} width={width} height={height} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <circle cx="12" cy="12" r="10"></circle>
             <line x1="12" y1="16" x2="12" y2="12"></line>
             <line x1="12" y1="8" x2="12.01" y2="8"></line>

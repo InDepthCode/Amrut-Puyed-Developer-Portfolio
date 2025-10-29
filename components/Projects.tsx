@@ -74,7 +74,7 @@ const ProjectCard: React.FC<{ project: Project; index: number; }> = React.memo((
                             whileHover={{ scale: 1.1, y: -2, color: '#67e8f9', borderColor: 'rgba(103, 232, 249, 0.4)' }}
                             transition={{ type: 'spring', stiffness: 300 }}
                         >
-                            {!skillsWithoutIcons.includes(tech) && <SkillIcon skill={tech} className="w-3.5 h-3.5" />}
+                            {!skillsWithoutIcons.includes(tech) && <SkillIcon skill={tech} width={14} height={14} />}
                             {tech}
                         </motion.div>
                     ))}
