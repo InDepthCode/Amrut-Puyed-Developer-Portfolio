@@ -2,11 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { SOCIAL_LINKS } from '../constants';
 
-export const CTA: React.FC = React.memo(() => {
+const CTA: React.FC = () => {
     return (
         <section id="contact" className="py-20">
             <motion.div 
-                className="relative bg-slate-900/70 backdrop-blur-sm border border-slate-800 rounded-2xl p-8 md:p-12 text-center overflow-hidden"
+                className="relative bg-slate-900/70 backdrop-blur-sm border border-slate-800 rounded-2xl p-8 md:p-12 text-center overflow-hidden cta-mobile"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
@@ -45,4 +45,6 @@ export const CTA: React.FC = React.memo(() => {
             </motion.div>
         </section>
     );
-});
+};
+
+export default React.memo(CTA);

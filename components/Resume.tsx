@@ -33,7 +33,7 @@ const GitBranchIcon = () => (
 
 const GlassCard: React.FC<{ children: React.ReactNode, delay?: number }> = React.memo(({ children, delay = 0 }) => (
     <motion.div
-        className="bg-slate-900/70 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 shadow-lg shadow-black/20"
+        className="bg-slate-900/70 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 shadow-lg shadow-black/20 glass-card-mobile"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.5 }}

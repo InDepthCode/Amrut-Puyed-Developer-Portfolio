@@ -5,8 +5,9 @@ import { SOCIAL_LINKS } from '../constants';
 import { GithubIcon } from './icons/GithubIcon';
 import { LinkedinIcon } from './icons/LinkedinIcon';
 import { MailIcon } from './icons/MailIcon';
+import { useMediaQuery } from './utils/useMediaQuery';
 
-const containerVariants: Variants = {
+const desktopContainerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
         opacity: 1,
@@ -17,7 +18,18 @@ const containerVariants: Variants = {
     },
 };
 
-const itemVariants: Variants = {
+const mobileContainerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1,
+            delayChildren: 0.2,
+        },
+    },
+};
+
+const desktopItemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
         opacity: 1,
@@ -26,6 +38,18 @@ const itemVariants: Variants = {
             type: 'spring',
             stiffness: 100,
             damping: 10,
+        },
+    },
+};
+
+const mobileItemVariants: Variants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.5,
+            ease: 'easeOut'
         },
     },
 };
@@ -87,6 +111,10 @@ const badges = [
 
 const Hero: React.FC = () => {
     const [copied, setCopied] = useState(false);
+    const isMobile = useMediaQuery('(max-width: 768px)');
+    
+    const containerVariants = isMobile ? mobileContainerVariants : desktopContainerVariants;
+    const itemVariants = isMobile ? mobileItemVariants : desktopItemVariants;
 
     const handleCopyEmail = () => {
         const emailAddress = SOCIAL_LINKS.email.replace('mailto:', '');

@@ -5,8 +5,9 @@ import type { Project } from '../types';
 import { GithubIcon } from './icons/GithubIcon';
 import { SkillsCarousel } from './ui/SkillsCarousel';
 import { SkillIcon } from './ui/SkillIcon';
+import { useMediaQuery } from './utils/useMediaQuery';
 
-const cardVariants: Variants = {
+const desktopCardVariants: Variants = {
     hidden: { opacity: 0, y: 50, scale: 0.95 },
     visible: (i: number) => ({
         opacity: 1,
@@ -21,8 +22,23 @@ const cardVariants: Variants = {
     }),
 };
 
+const mobileCardVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i: number) => ({
+        opacity: 1,
+        y: 0,
+        transition: {
+            delay: i * 0.05,
+            duration: 0.5,
+            ease: 'easeOut',
+        },
+    }),
+};
+
 const ProjectCard: React.FC<{ project: Project; index: number; }> = React.memo(({ project, index }) => {
     const skillsWithoutIcons = ['Remove.bg API', 'Database (60+ commits)'];
+    const isMobile = useMediaQuery('(max-width: 768px)');
+    const cardVariants = isMobile ? mobileCardVariants : desktopCardVariants;
 
     return (
         <motion.div
@@ -88,6 +104,8 @@ const Projects: React.FC = () => {
         ...RESUME_DATA.skills.devops, 
         ...RESUME_DATA.skills.databases
     ];
+    const isMobile = useMediaQuery('(max-width: 768px)');
+    const carouselDuration = isMobile ? 80 : 40;
 
     return (
         <section 
@@ -102,8 +120,8 @@ const Projects: React.FC = () => {
             >
                 <h3 className="text-3xl font-bold text-center mb-10 text-slate-100 font-display">Core Technologies</h3>
                 <div className="space-y-4">
-                    <SkillsCarousel skills={allSkills} direction="right" showProgressBar={false} />
-                    <SkillsCarousel skills={SPECIALIZED_SKILLS} direction="left" showProgressBar={false} />
+                    <SkillsCarousel skills={allSkills} direction="right" showProgressBar={false} duration={carouselDuration} />
+                    <SkillsCarousel skills={SPECIALIZED_SKILLS} direction="left" showProgressBar={false} duration={carouselDuration} />
                 </div>
                 {/* Single, shared progress bar */}
                 <div className="relative mt-6 h-1 w-full max-w-4xl mx-auto bg-slate-800/50 rounded-full overflow-hidden">

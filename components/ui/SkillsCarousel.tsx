@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { SkillIcon } from './SkillIcon';
@@ -8,9 +6,10 @@ interface SkillsCarouselProps {
     skills: string[];
     direction?: 'left' | 'right';
     showProgressBar?: boolean;
+    duration?: number;
 }
 
-export const SkillsCarousel: React.FC<SkillsCarouselProps> = React.memo(({ skills, direction = 'left', showProgressBar = true }) => {
+export const SkillsCarousel: React.FC<SkillsCarouselProps> = React.memo(({ skills, direction = 'left', showProgressBar = true, duration = 40 }) => {
     const duplicatedSkills = [...skills, ...skills];
 
     const animation = direction === 'left' 
@@ -29,7 +28,7 @@ export const SkillsCarousel: React.FC<SkillsCarouselProps> = React.memo(({ skill
                 animate={animation}
                 transition={{
                     ease: 'linear',
-                    duration: 40,
+                    duration: duration,
                     repeat: Infinity,
                 }}
             >
@@ -61,7 +60,7 @@ export const SkillsCarousel: React.FC<SkillsCarouselProps> = React.memo(({ skill
                         animate={{ width: "100%" }}
                         transition={{
                             ease: 'linear',
-                            duration: 40,
+                            duration: duration,
                             repeat: Infinity,
                         }}
                     />
