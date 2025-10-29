@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 // A comprehensive map of skills to their official logo URLs
@@ -60,7 +59,7 @@ const iconMap: { [key: string]: string } = {
 };
 
 // A component to render an icon based on skill name, now using external SVGs
-export const SkillIcon: React.FC<{ skill: string, className?: string }> = ({ skill, className }) => {
+export const SkillIcon: React.FC<{ skill: string, className?: string }> = React.memo(({ skill, className }) => {
     // Normalize skill name to match keys in iconMap
     const normalizedSkill = skill.toLowerCase().replace(/[\s\.\+\(\)]/g, '').replace(/\-+/g, '');
 
@@ -70,7 +69,7 @@ export const SkillIcon: React.FC<{ skill: string, className?: string }> = ({ ski
         // Some logos are dark and need to be inverted for dark mode for better visibility
         const needsInvert = ['nextjs', 'expressjs', 'githubactions', 'vercelanalytics', 'restapis', 'websocket', 'vercel', 'flask', 'langchain'].includes(normalizedSkill);
         const imgClassName = `${className} ${needsInvert ? 'dark:invert' : ''}`;
-        return <img src={iconUrl} alt={`${skill} logo`} className={imgClassName} style={{ objectFit: 'contain' }} />;
+        return <img src={iconUrl} alt={`${skill} logo`} className={imgClassName} style={{ objectFit: 'contain' }} loading="lazy" decoding="async" />;
     }
 
     // Fallback to a generic icon if a specific logo is not found
@@ -81,4 +80,4 @@ export const SkillIcon: React.FC<{ skill: string, className?: string }> = ({ ski
             <line x1="12" y1="8" x2="12.01" y2="8"></line>
         </svg>
     );
-};
+});

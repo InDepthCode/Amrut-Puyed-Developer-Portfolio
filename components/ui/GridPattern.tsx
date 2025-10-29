@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function GridPattern({
+export const GridPattern = React.memo(function GridPattern({
   width = 40,
   height = 40,
   x = -1,
@@ -47,4 +47,4 @@ export function GridPattern({
       )}
     </svg>
   )
-}
+});

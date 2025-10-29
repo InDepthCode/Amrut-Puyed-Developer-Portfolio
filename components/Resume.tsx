@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { RESUME_DATA } from '../constants';
@@ -15,7 +14,24 @@ const CertificateIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-cyan-400"><path d="M12 21l-8-4.5v-9l8 4.5 8-4.5v9L12 21z"></path><path d="M12 12l8-4.5"></path><path d="M12 12L4 7.5"></path><path d="M12 12v9"></path><path d="M20 7.5l-8 4.5"></path></svg>
 );
 
-const GlassCard: React.FC<{ children: React.ReactNode, delay?: number }> = ({ children, delay = 0 }) => (
+const ActivityIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-cyan-400"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+);
+
+const CodeIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-cyan-400"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+);
+
+const GitBranchIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-cyan-400">
+        <line x1="6" y1="3" x2="6" y2="15"></line>
+        <circle cx="18" cy="6" r="3"></circle>
+        <circle cx="6" cy="18" r="3"></circle>
+        <path d="M18 9a9 9 0 0 1-9 9"></path>
+    </svg>
+);
+
+const GlassCard: React.FC<{ children: React.ReactNode, delay?: number }> = React.memo(({ children, delay = 0 }) => (
     <motion.div
         className="bg-slate-900/70 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 shadow-lg shadow-black/20"
         initial={{ opacity: 0, y: 30 }}
@@ -25,22 +41,22 @@ const GlassCard: React.FC<{ children: React.ReactNode, delay?: number }> = ({ ch
     >
         {children}
     </motion.div>
-);
+));
 
-const SectionHeading: React.FC<{ children: React.ReactNode; icon: React.ReactNode }> = ({ children, icon }) => (
+const SectionHeading: React.FC<{ children: React.ReactNode; icon: React.ReactNode }> = React.memo(({ children, icon }) => (
     <h3 className="flex items-center gap-3 text-2xl font-bold text-slate-100 mb-6 font-display">
         {icon}
         <span>{children}</span>
     </h3>
-);
+));
 
-const TimelineItem: React.FC<{ children: React.ReactNode, isLast?: boolean }> = ({ children, isLast }) => (
+const TimelineItem: React.FC<{ children: React.ReactNode, isLast?: boolean }> = React.memo(({ children, isLast }) => (
     <div className={`relative pl-10 ${isLast ? '' : 'pb-12'}`}>
         <div className="absolute left-0 top-1 h-full w-px bg-slate-700" />
         <div className="absolute left-[-5px] top-1 h-3 w-3 rounded-full bg-cyan-400 ring-4 ring-slate-900" />
         {children}
     </div>
-);
+));
 
 const listVariants = { visible: { transition: { staggerChildren: 0.1 } } };
 const listItemVariants = {
@@ -132,10 +148,34 @@ const Resume: React.FC = () => {
                             ))}
                         </div>
                     </GlassCard>
+
+                    <GlassCard delay={0.6}>
+                        <SectionHeading icon={<ActivityIcon />}>Coding Activity</SectionHeading>
+                        <div className="space-y-6">
+                            <div className="flex items-center gap-4">
+                                <div className="bg-slate-800/50 p-3 rounded-full">
+                                    <CodeIcon />
+                                </div>
+                                <div>
+                                    <p className="font-bold text-slate-100 text-3xl font-display">250+</p>
+                                    <p className="text-slate-400 text-sm">DSA Problems Solved</p>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-4">
+                                <div className="bg-slate-800/50 p-3 rounded-full">
+                                    <GitBranchIcon />
+                                </div>
+                                <div>
+                                    <p className="font-bold text-slate-100 text-3xl font-display">500+</p>
+                                    <p className="text-slate-400 text-sm">Git Commits (Last Year)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </GlassCard>
                 </div>
             </div>
         </section>
     );
 };
 
-export default Resume;
+export default React.memo(Resume);

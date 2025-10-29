@@ -27,15 +27,15 @@ const App: React.FC = () => {
                 />
 
                 <div 
-                    className="absolute -top-40 -left-60 lg:-top-60 lg:-left-80 w-[28rem] h-[28rem] lg:w-[40rem] lg:h-[40rem] bg-violet-600/40 rounded-full mix-blend-plus-lighter filter blur-3xl opacity-50 animate-blob"
+                    className="absolute -top-40 -left-60 lg:-top-60 lg:-left-80 w-[28rem] h-[28rem] lg:w-[40rem] lg:h-[40rem] bg-violet-600/40 rounded-full filter blur-2xl opacity-50 animate-blob"
                     style={{ animationDelay: '0s' }}
                 ></div>
                 <div 
-                    className="absolute top-1/2 -right-40 lg:top-1/3 lg:-right-60 w-[28rem] h-[28rem] lg:w-[40rem] lg:h-[40rem] bg-cyan-500/40 rounded-full mix-blend-plus-lighter filter blur-3xl opacity-50 animate-blob"
+                    className="absolute top-1/2 -right-40 lg:top-1/3 lg:-right-60 w-[28rem] h-[28rem] lg:w-[40rem] lg:h-[40rem] bg-cyan-500/40 rounded-full filter blur-2xl opacity-50 animate-blob"
                     style={{ animationDelay: '2s' }}
                 ></div>
                  <div 
-                    className="absolute bottom-0 left-1/4 w-[28rem] h-[28rem] lg:w-[40rem] lg:h-[40rem] bg-pink-500/40 rounded-full mix-blend-plus-lighter filter blur-3xl opacity-40 animate-blob"
+                    className="absolute bottom-0 left-1/4 w-[28rem] h-[28rem] lg:w-[40rem] lg:h-[40rem] bg-pink-500/40 rounded-full filter blur-2xl opacity-40 animate-blob"
                     style={{ animationDelay: '4s' }}
                 ></div>
 

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import type { Project } from '../../types';
@@ -106,6 +105,8 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                                 opacity: { duration: 0.2 }
                             }}
                             className="max-w-full max-h-[70vh] object-contain rounded-lg"
+                            loading="lazy"
+                            decoding="async"
                         />
                     </AnimatePresence>
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { SOCIAL_LINKS } from '../constants';
 
-export const CTA: React.FC = () => {
+export const CTA: React.FC = React.memo(() => {
     return (
         <section id="contact" className="py-20">
             <motion.div 
@@ -45,4 +45,4 @@ export const CTA: React.FC = () => {
             </motion.div>
         </section>
     );
-}
+});

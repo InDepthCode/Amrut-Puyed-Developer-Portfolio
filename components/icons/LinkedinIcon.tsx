@@ -1,7 +1,6 @@
-
 import React from 'react';
 
-export const LinkedinIcon: React.FC<{ className?: string }> = ({ className }) => (
+export const LinkedinIcon: React.FC<{ className?: string }> = React.memo(({ className }) => (
     <svg 
         xmlns="http://www.w3.org/2000/svg" 
         viewBox="0 0 24 24" 
@@ -16,4 +15,4 @@ export const LinkedinIcon: React.FC<{ className?: string }> = ({ className }) =>
         <rect x="2" y="9" width="4" height="12"></rect>
         <circle cx="4" cy="4" r="2"></circle>
     </svg>
-);
+));

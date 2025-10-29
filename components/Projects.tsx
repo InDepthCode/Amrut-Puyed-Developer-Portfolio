@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import { PROJECTS, RESUME_DATA, SPECIALIZED_SKILLS } from '../constants';
@@ -22,7 +21,7 @@ const cardVariants: Variants = {
     }),
 };
 
-const ProjectCard: React.FC<{ project: Project; index: number; }> = ({ project, index }) => {
+const ProjectCard: React.FC<{ project: Project; index: number; }> = React.memo(({ project, index }) => {
     const skillsWithoutIcons = ['Remove.bg API', 'Database (60+ commits)'];
 
     return (
@@ -32,7 +31,6 @@ const ProjectCard: React.FC<{ project: Project; index: number; }> = ({ project, 
             className="relative bg-slate-900 border border-slate-800 rounded-2xl flex flex-col group transition-all duration-300 overflow-hidden shadow-lg shadow-black/30"
             whileHover={{ 
                 y: -8, 
-                boxShadow: '0 10px 30px -10px rgba(0,0,0,0.4), 0 0 20px 5px rgba(34, 211, 238, 0.15)',
                 transition: { type: 'spring', stiffness: 300 } 
             }}
         >
@@ -81,7 +79,7 @@ const ProjectCard: React.FC<{ project: Project; index: number; }> = ({ project, 
             </div>
         </motion.div>
     );
-};
+});
 
 const Projects: React.FC = () => {
     const allSkills = [
@@ -152,4 +150,4 @@ const Projects: React.FC = () => {
     );
 };
 
-export default Projects;
+export default React.memo(Projects);

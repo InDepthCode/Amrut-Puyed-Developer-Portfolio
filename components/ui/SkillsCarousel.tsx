@@ -1,4 +1,5 @@
 
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { SkillIcon } from './SkillIcon';
@@ -9,7 +10,7 @@ interface SkillsCarouselProps {
     showProgressBar?: boolean;
 }
 
-export const SkillsCarousel: React.FC<SkillsCarouselProps> = ({ skills, direction = 'left', showProgressBar = true }) => {
+export const SkillsCarousel: React.FC<SkillsCarouselProps> = React.memo(({ skills, direction = 'left', showProgressBar = true }) => {
     const duplicatedSkills = [...skills, ...skills];
 
     const animation = direction === 'left' 
@@ -42,10 +43,7 @@ export const SkillsCarousel: React.FC<SkillsCarouselProps> = ({ skills, directio
                         whileHover={{
                             scale: 1.05,
                             y: -4,
-                            backgroundColor: "rgba(15, 23, 42, 0.95)",
                             borderColor: "rgba(103, 232, 249, 0.5)",
-                            color: "#e5e7eb",
-                            boxShadow: '0px 8px 20px rgba(34, 211, 238, 0.25)',
                             transition: { type: "spring", stiffness: 300, damping: 15 }
                         }}
                     >
@@ -62,7 +60,7 @@ export const SkillsCarousel: React.FC<SkillsCarouselProps> = ({ skills, directio
                         initial={{ width: "0%" }}
                         animate={{ width: "100%" }}
                         transition={{
-                            ease: "linear",
+                            ease: 'linear',
                             duration: 40,
                             repeat: Infinity,
                         }}
@@ -71,4 +69,4 @@ export const SkillsCarousel: React.FC<SkillsCarouselProps> = ({ skills, directio
             )}
         </div>
     );
-};
+});
