@@ -59,7 +59,7 @@ export const PROJECTS: Project[] = [
 ];
 
 export const RESUME_DATA: ResumeData = {
-    summary: "Senior Software Engineer with 2.6+ years delivering cloud-native apps and scalable microservices using Java, Spring Boot, and React.js. Expert in backend architecture, Docker, AWS, CI/CD, and workflow automation. Builds impactful AI tools, SaaS products, and web platforms. Agile team player, open source contributor, and dedicated tech content creator.",
+    summary: "Senior Software Engineer with 2.8+ years delivering cloud-native apps and scalable microservices using Java, Spring Boot, and React.js. Expert in backend architecture, Docker, AWS, CI/CD, and workflow automation. Builds impactful AI tools, SaaS products, and web platforms. Agile team player, open source contributor, and dedicated tech content creator.",
     experience: [
         {
             role: 'Software Engineer (Full Stack)',
