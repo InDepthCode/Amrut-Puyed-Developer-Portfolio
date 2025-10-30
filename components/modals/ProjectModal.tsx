@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import type { Project } from '../../types';
@@ -65,7 +66,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
 
     return (
         <motion.div
-            className="fixed inset-0 bg-black/70 backdrop-blur-md flex items-center justify-center z-50 p-4"
+            className="fixed inset-0 bg-black/60 dark:bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4"
             variants={backdropVariants}
             initial="hidden"
             animate="visible"
@@ -73,16 +74,16 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
             onClick={onClose}
         >
             <motion.div
-                className="relative w-full max-w-4xl max-h-[90vh] bg-slate-900/80 border border-slate-700 rounded-2xl shadow-2xl flex flex-col"
+                className="relative w-full max-w-4xl max-h-[90vh] bg-white dark:bg-[#2c3038] border border-[#e5e7eb] dark:border-[#42464f] rounded-2xl shadow-2xl flex flex-col transition-colors duration-300"
                 variants={modalVariants}
                 exit="exit"
                 onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside modal
             >
-                <div className="flex items-center justify-between p-4 border-b border-slate-800 flex-shrink-0">
-                    <h3 className="text-xl font-bold text-slate-100">{project.title} - Gallery</h3>
+                <div className="flex items-center justify-between p-4 border-b border-[#e5e7eb] dark:border-[#42464f] flex-shrink-0">
+                    <h3 className="text-xl font-bold text-[#20323c] dark:text-[#f5f5f5]">{project.title} - Gallery</h3>
                     <button
                         onClick={onClose}
-                        className="p-2 rounded-full text-slate-400 hover:bg-slate-800 hover:text-white transition-colors"
+                        className="p-2 rounded-full text-[#4b5563] dark:text-[#a0a0a0] hover:bg-[#e5e7eb] dark:hover:bg-[#42464f] transition-colors"
                         aria-label="Close modal"
                     >
                         <CloseIcon className="w-6 h-6" />
@@ -130,7 +131,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                     )}
                 </div>
                 
-                <div className="p-4 text-center text-sm text-slate-400 border-t border-slate-800 flex-shrink-0">
+                <div className="p-4 text-center text-sm text-[#4b5563] dark:text-[#a0a0a0] border-t border-[#e5e7eb] dark:border-[#42464f] flex-shrink-0">
                     Image {currentIndex + 1} of {gallery.length}
                 </div>
             </motion.div>

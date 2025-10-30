@@ -1,6 +1,5 @@
 
 import React from 'react';
-// FIX: Import Variants type from framer-motion.
 import { motion, Variants } from 'framer-motion';
 
 interface SectionNavProps {
@@ -8,7 +7,6 @@ interface SectionNavProps {
     activeSection: string;
 }
 
-// FIX: Explicitly type navVariants with Variants to fix type inference issue.
 const navVariants: Variants = {
     hidden: { opacity: 0, x: 50 },
     visible: {
@@ -23,7 +21,6 @@ const navVariants: Variants = {
     }
 };
 
-// FIX: Explicitly type itemVariants with Variants.
 const itemVariants: Variants = {
     hidden: { opacity: 0, x: 20 },
     visible: { opacity: 1, x: 0 }
@@ -50,17 +47,17 @@ export const SectionNav: React.FC<SectionNavProps> = ({ sections, activeSection 
                     <motion.li key={section} variants={itemVariants}>
                         <button 
                             onClick={() => scrollToSection(section)}
-                            className="relative w-3 h-3 rounded-full bg-slate-700 hover:bg-cyan-400 transition-colors group"
+                            className="relative w-3 h-3 rounded-full bg-[#e5e7eb] dark:bg-[#42464f] hover:bg-[#00b4f0] transition-colors group"
                             aria-label={`Scroll to ${section} section`}
                         >
                             {activeSection === section && (
                                 <motion.span 
-                                    className="absolute inset-0 rounded-full bg-cyan-400"
+                                    className="absolute inset-0 rounded-full bg-[#00b4f0]"
                                     layoutId="activeSectionDot"
                                     transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                                 />
                             )}
-                            <span className="absolute left-full top-1/2 -translate-y-1/2 ml-4 px-2 py-1 text-xs font-semibold text-slate-900 bg-cyan-400 rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap capitalize pointer-events-none">
+                            <span className="absolute left-full top-1/2 -translate-y-1/2 ml-4 px-2 py-1 text-xs font-semibold text-white dark:text-[#20323c] bg-[#20323c] dark:bg-slate-200 rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap capitalize pointer-events-none">
                                 {section}
                             </span>
                         </button>

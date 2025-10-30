@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { SkillIcon } from './SkillIcon';
@@ -35,14 +36,14 @@ export const SkillsCarousel: React.FC<SkillsCarouselProps> = React.memo(({ skill
                 {duplicatedSkills.map((skill, index) => (
                     <motion.div
                         key={index}
-                        className="flex items-center justify-center bg-slate-900/70 backdrop-blur-sm text-slate-300 text-sm font-semibold px-5 py-3 rounded-full mx-2 flex-shrink-0 border border-slate-700/80 group-hover:[animation-play-state:paused] cursor-pointer"
+                        className="flex items-center justify-center bg-white dark:bg-[#2c3038] text-[#4b5563] dark:text-[#a0a0a0] text-sm font-semibold px-5 py-3 rounded-full mx-2 flex-shrink-0 border border-[#e5e7eb] dark:border-[#42464f] group-hover:[animation-play-state:paused] cursor-pointer transition-colors duration-300"
                         style={{
-                            boxShadow: '0 2px 10px rgba(0,0,0,0.2)'
+                            boxShadow: '0 2px 10px rgba(0,0,0,0.05)'
                         }}
                         whileHover={{
                             scale: 1.05,
                             y: -4,
-                            borderColor: "rgba(103, 232, 249, 0.5)",
+                            borderColor: "rgba(0, 180, 240, 0.5)",
                             transition: { type: "spring", stiffness: 300, damping: 15 }
                         }}
                     >
@@ -53,9 +54,9 @@ export const SkillsCarousel: React.FC<SkillsCarouselProps> = React.memo(({ skill
             </motion.div>
             
             {showProgressBar && (
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-slate-800/50">
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#e5e7eb] dark:bg-[#42464f]">
                      <motion.div
-                        className="h-full bg-gradient-to-r from-cyan-500 to-violet-500"
+                        className="h-full bg-[#00b4f0]"
                         initial={{ width: "0%" }}
                         animate={{ width: "100%" }}
                         transition={{
