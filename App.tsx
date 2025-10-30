@@ -4,6 +4,7 @@ import { SectionNav } from './components/ui/SectionNav';
 import { SectionObserver } from './components/utils/SectionObserver';
 import Hero from './components/Hero';
 import { ThemeToggle } from './components/ui/ThemeToggle';
+import { GridPattern } from './components/ui/GridPattern';
 
 const Projects = lazy(() => import('./components/Projects'));
 const Resume = lazy(() => import('./components/Resume'));
@@ -22,9 +23,22 @@ const App: React.FC = () => {
     );
 
     return (
-        <div className="bg-[#f6f9fa] dark:bg-[#20232a] text-[#4b5563] dark:text-[#a0a0a0] font-sans leading-relaxed overflow-x-hidden transition-colors duration-300">
-            <div className="relative isolate">
+        <div className="text-[#4b5563] dark:text-[#a0a0a0] font-sans leading-relaxed overflow-x-hidden transition-colors duration-300">
+            {/* Background Color Layer */}
+            <div className="fixed inset-0 -z-30 bg-[#f6f9fa] dark:bg-[#20232a]" />
 
+            {/* Global Grid Pattern Background */}
+            <div className="fixed inset-0 -z-20 blur-[1px]" aria-hidden="true">
+                <GridPattern
+                    width={72}
+                    height={72}
+                    x={-1}
+                    y={-1}
+                    className="stroke-gray-500/15 dark:stroke-gray-500/10 w-full h-full"
+                />
+            </div>
+
+            <div className="relative isolate">
                 <ThemeToggle />
                 <SectionNav sections={SECTIONS} activeSection={activeSection} />
 

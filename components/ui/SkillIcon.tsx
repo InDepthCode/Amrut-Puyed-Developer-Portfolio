@@ -51,10 +51,10 @@ const iconMap: { [key: string]: string } = {
     // --- FIXED ICONS ---
     tailwindcss: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original-wordmark.svg',
     supabase: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg',
-    restapis: 'https://www.svgrepo.com/show/508964/api.svg',
+    restapis: 'https://www.svgrepo.com/show/349313/api.svg',
     langchain: 'https://raw.githubusercontent.com/langchain-ai/langchain/master/docs/static/img/logo-symbol.svg',
-    ffmpegwasm: 'https://www.svgrepo.com/show/303323/ffmpeg-logo.svg',
-    ffmpeg: 'https://www.svgrepo.com/show/303323/ffmpeg-logo.svg',
+    ffmpegwasm: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ffmpeg/ffmpeg-original.svg',
+    ffmpeg: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ffmpeg/ffmpeg-original.svg',
     camundabpm: 'https://cdn.worldvectorlogo.com/logos/camunda.svg',
 };
 

@@ -8,7 +8,6 @@ import { LinkedinIcon } from './icons/LinkedinIcon';
 import { MailIcon } from './icons/MailIcon';
 import { useMediaQuery } from './utils/useMediaQuery';
 import { useMousePosition } from './utils/useMousePosition';
-import { GridPattern } from './ui/GridPattern';
 
 const desktopContainerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -130,17 +129,6 @@ const Hero: React.FC = () => {
             animate="visible"
             variants={containerVariants}
         >
-            {/* Grid Pattern Background */}
-            <div className="absolute inset-0 -z-20" aria-hidden="true">
-                <GridPattern
-                    width={72}
-                    height={72}
-                    x={-1}
-                    y={-1}
-                    className="stroke-gray-500/10 dark:stroke-gray-500/5 [mask-image:radial-gradient(ellipse_at_center,white,transparent_70%)]"
-                />
-            </div>
-
             {/* Decorative background blobs */}
             <div aria-hidden="true" className="absolute inset-0 -z-10 overflow-hidden">
                 <motion.div 
@@ -270,12 +258,6 @@ const Hero: React.FC = () => {
                     </AnimatePresence>
                 </div>
             </motion.div>
-            
-            {/* Curved Divider */}
-            <div 
-                aria-hidden="true"
-                className="absolute bottom-0 left-0 w-full h-16 bg-[#f6f9fa] dark:bg-[#20232a] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_100%,#000_70%,transparent_100%)] transition-colors duration-300"
-            />
         </motion.section>
     );
 };
