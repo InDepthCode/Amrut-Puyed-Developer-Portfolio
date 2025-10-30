@@ -1,5 +1,7 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+
+
+import React, { useEffect } from 'react';
+import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
 import { RESUME_DATA } from '../constants';
 
 const BriefcaseIcon = () => (
@@ -31,9 +33,21 @@ const GitBranchIcon = () => (
     </svg>
 );
 
+const AnimatedCounter = ({ to }: { to: number }) => {
+    const count = useMotionValue(0);
+    const rounded = useTransform(count, Math.round);
+
+    useEffect(() => {
+        const animation = animate(count, to, { duration: 2, ease: "easeOut" });
+        return animation.stop;
+    }, [to, count]);
+
+    return <motion.span>{rounded}</motion.span>;
+};
+
 const GlassCard: React.FC<{ children: React.ReactNode, delay?: number }> = React.memo(({ children, delay = 0 }) => (
     <motion.div
-        className="bg-white dark:bg-[#2c3038] border border-[#e5e7eb] dark:border-[#42464f] rounded-2xl p-6 shadow-md transition-colors duration-300"
+        className="bg-slate-50 dark:bg-slate-800 border border-[#e5e7eb] dark:border-[#42464f] rounded-2xl p-6 shadow-md transition-colors duration-300"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.5 }}
@@ -53,7 +67,7 @@ const SectionHeading: React.FC<{ children: React.ReactNode; icon: React.ReactNod
 const TimelineItem: React.FC<{ children: React.ReactNode, isLast?: boolean }> = React.memo(({ children, isLast }) => (
     <div className={`relative pl-10 ${isLast ? '' : 'pb-12'}`}>
         <div className="absolute left-0 top-1 h-full w-px bg-[#e5e7eb] dark:bg-[#42464f]" />
-        <div className="absolute left-[-5px] top-1 h-3 w-3 rounded-full bg-[#00b4f0] ring-4 ring-white dark:ring-[#2c3038]" />
+        <div className="absolute left-[-5px] top-1 h-3 w-3 rounded-full bg-[#00b4f0] ring-4 ring-slate-50 dark:ring-slate-800" />
         {children}
     </div>
 ));
@@ -92,7 +106,7 @@ const Resume: React.FC = () => {
                     <div className="space-y-4">
                         {RESUME_DATA.experience.map((job, index) => (
                             <TimelineItem key={index} isLast={index === RESUME_DATA.experience.length - 1}>
-                                <div className="bg-[#f6f9fa] dark:bg-[#20232a] border border-[#e5e7eb] dark:border-[#42464f] rounded-lg p-6 transition-all hover:border-[#d1d5db] dark:hover:border-[#4f545c]">
+                                <div className="bg-slate-100 dark:bg-slate-900 border border-[#e5e7eb] dark:border-[#42464f] rounded-lg p-6 transition-all hover:border-[#d1d5db] dark:hover:border-[#4f545c]">
                                     <h4 className="text-xl font-semibold text-[#00b4f0] font-display">{job.role}</h4>
                                     <p className="mt-1 text-[#20323c] dark:text-[#f5f5f5] font-medium">{job.company} <span className="text-[#4b5563] dark:text-[#a0a0a0] font-normal text-sm ml-2">| {job.duration}</span></p>
                                     <ul className="mt-4 list-disc list-inside text-[#4b5563] dark:text-[#a0a0a0] space-y-2 text-sm">
@@ -131,20 +145,24 @@ const Resume: React.FC = () => {
                         <SectionHeading icon={<ActivityIcon />}>Coding Activity</SectionHeading>
                         <div className="space-y-6">
                             <div className="flex items-center gap-4">
-                                <div className="bg-[#f6f9fa] dark:bg-[#20232a] p-3 rounded-full">
+                                <div className="bg-slate-100 dark:bg-slate-900 p-3 rounded-full">
                                     <CodeIcon />
                                 </div>
                                 <div>
-                                    <p className="font-bold text-[#20323c] dark:text-[#f5f5f5] text-3xl font-display">250+</p>
+                                    <p className="font-bold text-[#20323c] dark:text-[#f5f5f5] text-3xl font-display">
+                                        <AnimatedCounter to={250} />+
+                                    </p>
                                     <p className="text-[#4b5563] dark:text-[#a0a0a0] text-sm">DSA Problems Solved</p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-4">
-                                <div className="bg-[#f6f9fa] dark:bg-[#20232a] p-3 rounded-full">
+                                <div className="bg-slate-100 dark:bg-slate-900 p-3 rounded-full">
                                     <GitBranchIcon />
                                 </div>
                                 <div>
-                                    <p className="font-bold text-[#20323c] dark:text-[#f5f5f5] text-3xl font-display">500+</p>
+                                    <p className="font-bold text-[#20323c] dark:text-[#f5f5f5] text-3xl font-display">
+                                        <AnimatedCounter to={500} />+
+                                    </p>
                                     <p className="text-[#4b5563] dark:text-[#a0a0a0] text-sm">Git Commits (Last Year)</p>
                                 </div>
                             </div>

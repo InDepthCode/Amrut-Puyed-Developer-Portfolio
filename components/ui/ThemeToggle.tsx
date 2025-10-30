@@ -1,4 +1,5 @@
 
+
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../../contexts/ThemeContext';
@@ -30,7 +31,7 @@ export const ThemeToggle: React.FC = () => {
         <div className="fixed top-6 right-6 z-50">
             <motion.button
                 onClick={toggleTheme}
-                className="w-12 h-12 bg-white/80 dark:bg-[#2c3038]/80 backdrop-blur-sm border border-[#e5e7eb] dark:border-[#42464f] rounded-full flex items-center justify-center text-[#4b5563] dark:text-[#a0a0a0] shadow-md"
+                className="w-12 h-12 bg-slate-50/80 dark:bg-slate-800/80 backdrop-blur-sm border border-[#e5e7eb] dark:border-[#42464f] rounded-full flex items-center justify-center text-[#4b5563] dark:text-[#a0a0a0] shadow-md"
                 aria-label="Toggle theme"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}

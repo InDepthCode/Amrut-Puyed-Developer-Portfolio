@@ -3,9 +3,8 @@ import { motion, Variants } from 'framer-motion';
 import { PROJECTS, RESUME_DATA, SPECIALIZED_SKILLS } from '../constants';
 import type { Project } from '../types';
 import { GithubIcon } from './icons/GithubIcon';
-import { SkillsCarousel } from './ui/SkillsCarousel';
 import { SkillIcon } from './ui/SkillIcon';
-import { useMediaQuery } from './utils/useMediaQuery';
+import { SkillsCarousel } from './ui/SkillsCarousel';
 
 const cardVariants: Variants = {
     hidden: { opacity: 0 },
@@ -26,16 +25,16 @@ const ProjectCard: React.FC<{ project: Project; index: number; }> = React.memo((
         <motion.div
             custom={index}
             variants={cardVariants}
-            className="relative bg-white dark:bg-[#2c3038] border border-[#e5e7eb] dark:border-[#42464f] rounded-2xl flex flex-col group transition-colors duration-300 overflow-hidden shadow-md dark:shadow-xl dark:shadow-black/20"
+            className="relative bg-slate-50 dark:bg-slate-800 border border-[#e5e7eb] dark:border-[#42464f] rounded-2xl flex flex-col group transition-colors duration-300 overflow-hidden shadow-md dark:shadow-xl dark:shadow-black/20"
             whileHover={{ 
                 y: -5,
-                boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+                boxShadow: '0 8px 15px -3px rgb(0 0 0 / 0.07), 0 4px 6px -4px rgb(0 0 0 / 0.07)',
                 transition: { type: 'spring', stiffness: 300 } 
             }}
         >
-            <div className="absolute inset-0 border-2 border-transparent group-hover:border-[#00b4f0] rounded-2xl transition-all duration-300 pointer-events-none" />
+            <div className="absolute inset-0 border-2 border-transparent group-hover:border-[#00b4f0]/50 rounded-2xl transition-all duration-300 pointer-events-none" />
             
-            <div className="bg-[#f6f9fa] dark:bg-[#20232a] p-6 border-b border-[#e5e7eb] dark:border-[#42464f]">
+            <div className="bg-slate-100 dark:bg-slate-900 p-6 border-b border-[#e5e7eb] dark:border-[#42464f]">
                 <div className="text-5xl" aria-hidden="true">{project.emoji}</div>
             </div>
 
@@ -44,7 +43,7 @@ const ProjectCard: React.FC<{ project: Project; index: number; }> = React.memo((
                 
                 <p className="mt-3 text-[#4b5563] dark:text-[#a0a0a0] text-sm leading-relaxed flex-grow">{project.description}</p>
                 
-                <div className="mt-4 text-sm text-[#20323c] dark:text-[#f5f5f5] bg-[#f6f9fa] dark:bg-[#20232a] p-3 rounded-lg border border-[#00b4f0]/20 flex items-start gap-3">
+                <div className="mt-4 text-sm text-[#20323c] dark:text-[#f5f5f5] bg-slate-100 dark:bg-slate-900 p-3 rounded-lg border border-[#00b4f0]/20 flex items-start gap-3">
                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" className="text-[#00b4f0] flex-shrink-0 mt-0.5"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
                    <p><span className="font-semibold text-[#00b4f0]">Value:</span> {project.valueProp}</p>
                 </div>
@@ -53,7 +52,7 @@ const ProjectCard: React.FC<{ project: Project; index: number; }> = React.memo((
                     {project.tech.map((tech, i) => (
                         <motion.div 
                             key={i} 
-                            className="inline-flex items-center gap-2 bg-[#f6f9fa] dark:bg-[#20232a] text-[#4b5563] dark:text-[#a0a0a0] text-xs font-medium px-3 py-1.5 rounded-full border border-transparent"
+                            className="inline-flex items-center gap-2 bg-slate-100 dark:bg-slate-900 text-[#4b5563] dark:text-[#a0a0a0] text-xs font-medium px-3 py-1.5 rounded-full border border-transparent"
                             whileHover={{ scale: 1.1, y: -2, color: '#00b4f0', borderColor: 'rgba(0, 180, 240, 0.4)' }}
                             transition={{ type: 'spring', stiffness: 300 }}
                         >
@@ -85,10 +84,15 @@ const Projects: React.FC = () => {
         ...RESUME_DATA.skills.technologies,
         ...RESUME_DATA.skills.languages, 
         ...RESUME_DATA.skills.devops, 
-        ...RESUME_DATA.skills.databases
+        ...RESUME_DATA.skills.databases,
+        ...SPECIALIZED_SKILLS
     ];
-    const isMobile = useMediaQuery('(max-width: 768px)');
-    const carouselDuration = isMobile ? 80 : 40;
+    // Remove duplicates
+    const uniqueSkills = [...new Set(allSkills)];
+
+    const midPoint = Math.ceil(uniqueSkills.length / 2);
+    const skills1 = uniqueSkills.slice(0, midPoint);
+    const skills2 = uniqueSkills.slice(midPoint);
 
     return (
         <section 
@@ -101,28 +105,15 @@ const Projects: React.FC = () => {
                 viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.5 }}
             >
-                <h3 className="text-3xl font-bold text-center mb-10 text-[#20323c] dark:text-[#f5f5f5] font-display">Core Technologies</h3>
+                <h3 className="text-3xl font-bold text-center mb-10 text-[#20323c] dark:text-[#f5f5f5] font-display">Technologies</h3>
                 <div className="space-y-4">
-                    <SkillsCarousel skills={allSkills} direction="right" showProgressBar={false} duration={carouselDuration} />
-                    <SkillsCarousel skills={SPECIALIZED_SKILLS} direction="left" showProgressBar={false} duration={carouselDuration} />
-                </div>
-                {/* Single, shared progress bar */}
-                <div className="relative mt-6 h-1 w-full max-w-4xl mx-auto bg-[#e5e7eb] dark:bg-[#42464f] rounded-full overflow-hidden">
-                    <motion.div
-                        className="h-full bg-[#00b4f0]"
-                        initial={{ width: "0%" }}
-                        animate={{ width: "100%" }}
-                        transition={{
-                            ease: "linear",
-                            duration: 40,
-                            repeat: Infinity,
-                        }}
-                    />
+                    <SkillsCarousel skills={skills1} direction="left" />
+                    <SkillsCarousel skills={skills2} direction="right" />
                 </div>
             </motion.div>
 
             <motion.div 
-                className="pt-16"
+                className="pt-24"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.1 }}

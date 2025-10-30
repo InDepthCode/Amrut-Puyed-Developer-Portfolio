@@ -1,4 +1,5 @@
 
+
 import React, { useState, lazy, Suspense } from 'react';
 import { SectionNav } from './components/ui/SectionNav';
 import { SectionObserver } from './components/utils/SectionObserver';
@@ -17,7 +18,7 @@ const App: React.FC = () => {
     const [activeSection, setActiveSection] = useState('hero');
 
     const loadingFallback = (
-        <div className="fixed inset-0 flex items-center justify-center bg-[#f6f9fa] dark:bg-[#20232a]">
+        <div className="fixed inset-0 flex items-center justify-center bg-slate-100 dark:bg-slate-900">
             <div className="w-16 h-16 border-4 border-[#00b4f0] border-t-transparent rounded-full animate-spin"></div>
         </div>
     );
@@ -31,7 +32,7 @@ const App: React.FC = () => {
                     height={72}
                     x={-1}
                     y={-1}
-                    className="stroke-gray-500/20 dark:stroke-gray-500/15 w-full h-full"
+                    className="stroke-gray-500/10 dark:stroke-gray-500/5 w-full h-full"
                 />
             </div>
 

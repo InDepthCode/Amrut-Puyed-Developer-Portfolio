@@ -1,4 +1,5 @@
 
+
 import React, { useState } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import type { Project } from '../../types';
@@ -74,7 +75,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
             onClick={onClose}
         >
             <motion.div
-                className="relative w-full max-w-4xl max-h-[90vh] bg-white dark:bg-[#2c3038] border border-[#e5e7eb] dark:border-[#42464f] rounded-2xl shadow-2xl flex flex-col transition-colors duration-300"
+                className="relative w-full max-w-4xl max-h-[90vh] bg-slate-50 dark:bg-slate-800 border border-[#e5e7eb] dark:border-[#42464f] rounded-2xl shadow-2xl flex flex-col transition-colors duration-300"
                 variants={modalVariants}
                 exit="exit"
                 onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside modal

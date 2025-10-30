@@ -1,3 +1,5 @@
+
+
 import React, { useState, useRef } from 'react';
 import { motion, Variants, TargetAndTransition, Transition, AnimatePresence } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
@@ -6,7 +8,6 @@ import { GithubIcon } from './icons/GithubIcon';
 import { LinkedinIcon } from './icons/LinkedinIcon';
 import { MailIcon } from './icons/MailIcon';
 import { useMediaQuery } from './utils/useMediaQuery';
-import { useMousePosition } from './utils/useMousePosition';
 
 const desktopContainerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -92,18 +93,7 @@ const badges = [
 const Hero: React.FC = () => {
     const [copied, setCopied] = useState(false);
     const isMobile = useMediaQuery('(max-width: 768px)');
-    const { x, y } = useMousePosition();
-    const heroRef = useRef<HTMLElement>(null);
     
-    // Calculate mouse position relative to the hero section for accurate spotlight positioning
-    let relX = x;
-    let relY = y;
-    if (heroRef.current) {
-        const rect = heroRef.current.getBoundingClientRect();
-        relX = x - rect.left;
-        relY = y - rect.top;
-    }
-
     const containerVariants = isMobile ? mobileContainerVariants : desktopContainerVariants;
     const itemVariants = isMobile ? mobileItemVariants : desktopItemVariants;
 
@@ -122,51 +112,19 @@ const Hero: React.FC = () => {
     return (
         <motion.section 
             id="hero"
-            ref={heroRef}
             className="relative overflow-hidden min-h-screen flex flex-col justify-center text-center py-20 px-4 sm:px-6 lg:px-8"
             initial="hidden"
             animate="visible"
             variants={containerVariants}
         >
-            {/* Decorative background blobs */}
-            <div aria-hidden="true" className="absolute inset-0 -z-10 overflow-hidden">
-                <motion.div 
-                    className="absolute top-[-10rem] left-[-20rem] w-[50rem] h-[50rem] bg-[#00b4f0]/20 rounded-full blur-3xl"
-                    animate={{
-                        x: [0, 100, 0, -50, 0],
-                        y: [0, -50, 0, 50, 0],
-                        scale: [1, 1.1, 1, 1.1, 1],
-                    }}
-                    transition={{
-                        duration: 40,
-                        ease: "easeInOut",
-                        repeat: Infinity,
-                    }}
-                />
-                <motion.div 
-                    className="absolute bottom-[-15rem] right-[-25rem] w-[55rem] h-[55rem] bg-[#8b5cf6]/15 rounded-full blur-3xl"
-                    animate={{
-                        x: [0, -100, 0, 50, 0],
-                        y: [0, 50, 0, -50, 0],
-                        scale: [1, 1.1, 1, 1.1, 1],
-                    }}
-                    transition={{
-                        duration: 50,
-                        ease: "easeInOut",
-                        repeat: Infinity,
-                    }}
-                />
-            </div>
-
-            {/* Spotlight glow effect - made more prominent and positioned correctly */}
-            {!isMobile && (
-                 <motion.div
-                    className="pointer-events-none absolute -inset-px opacity-100 transition-opacity duration-300"
-                    style={{
-                        background: `radial-gradient(600px circle at ${relX}px ${relY}px, rgba(0, 180, 240, 0.15), transparent 80%)`,
-                    }}
-                 />
-            )}
+            {/* Subtle, static background gradient */}
+            <div 
+                aria-hidden="true" 
+                className="absolute inset-0 -z-10"
+                style={{
+                    background: 'radial-gradient(ellipse at center, rgba(0, 180, 240, 0.05), transparent 70%)'
+                }}
+            />
 
             <motion.div variants={itemVariants} className="mb-8 relative z-10">
                  <a 
@@ -174,7 +132,6 @@ const Hero: React.FC = () => {
                     className="inline-flex items-center gap-2 bg-emerald-400/10 border border-emerald-400/30 text-emerald-400 text-sm font-semibold px-4 py-2 rounded-full shadow-lg shadow-emerald-400/20 group transition-all hover:bg-emerald-400/20 hover:border-emerald-400/50"
                 >
                     <span className="relative flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                         <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
                     </span>
                     Exploring New Roles & Projects
@@ -210,7 +167,7 @@ const Hero: React.FC = () => {
                 {badges.map((badge, i) => (
                     <motion.div 
                         key={i} 
-                        className="flex items-center gap-2 bg-white dark:bg-[#2c3038] border border-[#e5e7eb] dark:border-[#42464f] text-xs font-medium px-3 py-1.5 rounded-full shadow-sm text-[#20323c] dark:text-[#f5f5f5]"
+                        className="flex items-center gap-2 bg-slate-50 dark:bg-slate-800 border border-[#e5e7eb] dark:border-[#42464f] text-xs font-medium px-3 py-1.5 rounded-full shadow-sm text-[#20323c] dark:text-[#f5f5f5]"
                         whileHover={{ 
                             scale: 1.05, 
                             y: -2, 

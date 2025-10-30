@@ -5,7 +5,7 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Vaadin-inspired theme color -->
-    <meta name="theme-color" content="#f6f9fa">
+    <meta name="theme-color" content="#f1f5f9">
     <title>Amrut Puyed | Developer Portfolio</title>
     <!-- Preconnect for critical domains -->
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
@@ -33,14 +33,15 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            /* Vaadin Background Light */
-            background-color: #f6f9fa; 
+            /* Soft off-white background */
+            background-color: #f1f5f9; /* slate-100 */
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
         .dark body {
-            background-color: #20232a; /* Dark theme background */
+            /* Dark theme background */
+            background-color: #0f172a; /* slate-900 */
         }
 
         .font-display {
@@ -70,6 +71,16 @@
         }
         .dark ::-webkit-scrollbar-thumb:hover {
             background: #a0a0a0;
+        }
+
+        @keyframes scroll-left {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        @keyframes scroll-right {
+            from { transform: translateX(-50%); }
+            to { transform: translateX(0); }
         }
     </style>
 <script type="importmap">
