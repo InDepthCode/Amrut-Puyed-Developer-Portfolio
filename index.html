@@ -5,7 +5,7 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Vaadin-inspired theme color -->
-    <meta name="theme-color" content="#20232a">
+    <meta name="theme-color" content="#f6f9fa">
     <title>Amrut Puyed | Developer Portfolio</title>
     <!-- Preconnect for critical domains -->
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
@@ -33,12 +33,14 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            /* Vaadin Background Light */
+            background-color: #f6f9fa; 
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
         .dark body {
-            /* Background color is handled in the App component for proper layering */
+            background-color: #20232a; /* Dark theme background */
         }
 
         .font-display {

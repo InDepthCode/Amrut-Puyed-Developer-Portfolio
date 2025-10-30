@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from 'react';
 import { motion, Variants, TargetAndTransition, Transition, AnimatePresence } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
@@ -70,8 +69,8 @@ const BadgeIcons = {
     code: (
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
     ),
-    linkedin: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+    pen: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
     ),
 };
 
@@ -86,7 +85,7 @@ const badges = [
     },
     { 
         text: 'AI & Tech Blogger',
-        icon: 'linkedin',
+        icon: 'pen',
     }
 ];
 
@@ -132,7 +131,7 @@ const Hero: React.FC = () => {
             {/* Decorative background blobs */}
             <div aria-hidden="true" className="absolute inset-0 -z-10 overflow-hidden">
                 <motion.div 
-                    className="absolute top-[-10rem] left-[-15rem] w-[40rem] h-[40rem] bg-[#00b4f0]/20 rounded-full filter blur-3xl opacity-50"
+                    className="absolute top-[-10rem] left-[-20rem] w-[50rem] h-[50rem] bg-[#00b4f0]/20 rounded-full blur-3xl"
                     animate={{
                         x: [0, 100, 0, -50, 0],
                         y: [0, -50, 0, 50, 0],
@@ -145,7 +144,7 @@ const Hero: React.FC = () => {
                     }}
                 />
                 <motion.div 
-                    className="absolute bottom-[-10rem] right-[-15rem] w-[40rem] h-[40rem] bg-[#8b5cf6]/20 rounded-full filter blur-3xl opacity-50"
+                    className="absolute bottom-[-15rem] right-[-25rem] w-[55rem] h-[55rem] bg-[#8b5cf6]/15 rounded-full blur-3xl"
                     animate={{
                         x: [0, -100, 0, 50, 0],
                         y: [0, 50, 0, -50, 0],
@@ -162,9 +161,9 @@ const Hero: React.FC = () => {
             {/* Spotlight glow effect - made more prominent and positioned correctly */}
             {!isMobile && (
                  <motion.div
-                    className="pointer-events-none absolute -inset-px opacity-75 dark:opacity-100 transition-opacity duration-300"
+                    className="pointer-events-none absolute -inset-px opacity-100 transition-opacity duration-300"
                     style={{
-                        background: `radial-gradient(600px circle at ${relX}px ${relY}px, rgba(0, 180, 240, 0.2), transparent 80%)`,
+                        background: `radial-gradient(600px circle at ${relX}px ${relY}px, rgba(0, 180, 240, 0.15), transparent 80%)`,
                     }}
                  />
             )}
@@ -185,8 +184,7 @@ const Hero: React.FC = () => {
             <motion.div variants={itemVariants} className="relative z-10">
                 <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold font-display">
                      <span className="block text-3xl md:text-4xl font-medium text-[#4b5563] dark:text-[#a0a0a0] mb-2">Hey, I'm</span>
-                     {/* Enhanced gradient for better visibility */}
-                     <span className="bg-gradient-to-r from-[#00b4f0] to-[#9333ea] bg-clip-text text-transparent">
+                     <span className="bg-gradient-to-r from-[#00b4f0] to-[#8b5cf6] bg-clip-text text-transparent">
                         Amrut Puyed
                     </span>
                 </h1>

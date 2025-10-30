@@ -24,17 +24,14 @@ const App: React.FC = () => {
 
     return (
         <div className="text-[#4b5563] dark:text-[#a0a0a0] font-sans leading-relaxed overflow-x-hidden transition-colors duration-300">
-            {/* Background Color Layer */}
-            <div className="fixed inset-0 -z-30 bg-[#f6f9fa] dark:bg-[#20232a]" />
-
             {/* Global Grid Pattern Background */}
-            <div className="fixed inset-0 -z-20 blur-[1px]" aria-hidden="true">
+            <div className="fixed inset-0 -z-20" aria-hidden="true">
                 <GridPattern
                     width={72}
                     height={72}
                     x={-1}
                     y={-1}
-                    className="stroke-gray-500/15 dark:stroke-gray-500/10 w-full h-full"
+                    className="stroke-gray-500/20 dark:stroke-gray-500/15 w-full h-full"
                 />
             </div>
 
